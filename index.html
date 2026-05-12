@@ -1,76 +1,85 @@
 <!DOCTYPE html>
-<!-- saved from url=(0071)file:///C:/Users/Meadows/Downloads/Meaodws%20Maintenance%20Tracker.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Facility Maintenance Tracker</title>
-<link rel="stylesheet" href="./Facility Maintenance Tracker_files/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"
+      onerror="this.onerror=null;this.href='https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css'"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0f1117;
-  --bg2:#1a1d27;
-  --bg3:#21253a;
-  --bg4:#2a2f45;
-  --text:#e8eaf0;
-  --text2:#9ba3bf;
-  --text3:#5a6282;
-  --border:#2e3450;
-  --border2:#3a4060;
-  --blue:#4f8ef7;
-  --blue-dim:#1e2d52;
-  --blue-text:#a3c0fd;
-  --green:#3ecf6e;
-  --green-dim:#0d2e1a;
-  --green-text:#7ddfa4;
-  --amber:#f5a623;
-  --amber-dim:#2e1f05;
-  --amber-text:#f5c87a;
-  --red:#f45b5b;
-  --red-dim:#2e0f0f;
-  --red-text:#f79393;
-  --gray-dim:#1e2130;
-  --gray-text:#6b7494;
-  --purple:#8b6cf7;
-  --purple-dim:#1e1535;
-  --radius:8px;
-  --radius-lg:12px;
-  --shadow:0 4px 24px rgba(0,0,0,.5);
+  --bg:#0f1117;--bg2:#1a1d27;--bg3:#21253a;--bg4:#2a2f45;
+  --text:#e8eaf0;--text2:#9ba3bf;--text3:#5a6282;
+  --border:#2e3450;--border2:#3a4060;
+  --blue:#4f8ef7;--blue-dim:#1e2d52;--blue-text:#a3c0fd;
+  --green:#3ecf6e;--green-dim:#0d2e1a;--green-text:#7ddfa4;
+  --amber:#f5a623;--amber-dim:#2e1f05;--amber-text:#f5c87a;
+  --red:#f45b5b;--red-dim:#2e0f0f;--red-text:#f79393;
+  --gray-dim:#1e2130;--gray-text:#6b7494;
+  --purple:#8b6cf7;--purple-dim:#1e1535;
+  --radius:8px;--radius-lg:12px;--shadow:0 4px 24px rgba(0,0,0,.5);
 }
-
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;height:100vh;overflow:hidden}
 .app{display:flex;flex-direction:column;height:100vh}
-
-/* ── Header ── */
-.header{
-  background:var(--bg2);
-  border-bottom:1px solid var(--border);
-  padding:10px 18px;
-  display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap;
-}
-.header-logo{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;gap:16px;color:var(--text3)}
+.loading-spinner{width:36px;height:36px;border:3px solid var(--border2);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-status{font-size:13px;color:var(--text3)}
+.error-screen{display:flex;align-items:center;justify-content:center;height:100vh;padding:20px}
+.error-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;max-width:480px;width:100%;text-align:center}
+.error-card i{font-size:40px;color:var(--red);display:block;margin-bottom:12px}
+.error-card h2{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.error-card p{font-size:13px;color:var(--text3);line-height:1.6;margin-bottom:16px}
+.error-card button{background:var(--blue);color:#fff;border:none;padding:9px 20px;border-radius:var(--radius);font-size:13px;cursor:pointer;font-family:inherit;font-weight:600}
+/* Header */
+.header{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap}
+.header-logo{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;color:var(--text)}
 .header-logo i{font-size:21px;color:var(--blue)}
 .header-badges{display:flex;gap:6px;flex-wrap:wrap}
-.badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;letter-spacing:.01em}
-.badge-blue  {background:var(--blue-dim);  color:var(--blue-text)}
-.badge-red   {background:var(--red-dim);   color:var(--red-text)}
-.badge-amber {background:var(--amber-dim); color:var(--amber-text)}
-.badge-green {background:var(--green-dim); color:var(--green-text)}
-.badge-gray  {background:var(--gray-dim);  color:var(--gray-text)}
+.badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.badge-blue{background:var(--blue-dim);color:var(--blue-text)}
+.badge-red{background:var(--red-dim);color:var(--red-text)}
+.badge-amber{background:var(--amber-dim);color:var(--amber-text)}
+.badge-green{background:var(--green-dim);color:var(--green-text)}
+.badge-gray{background:var(--gray-dim);color:var(--gray-text)}
 .header-actions{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 .header-divider{width:1px;height:22px;background:var(--border);margin:0 2px}
-
-/* ── Layout ── */
+.sync-indicator{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;background:var(--bg3);border:1px solid var(--border2)}
+.sync-dot{width:7px;height:7px;border-radius:50%}
+.sync-dot.live{background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2s infinite}
+.sync-dot.saving{background:var(--amber);animation:pulse .6s infinite}
+.sync-dot.offline{background:var(--red)}
+.sync-dot.setup{background:var(--gray-text)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+/* Setup Screen */
+.setup-screen{display:flex;align-items:center;justify-content:center;flex:1;padding:20px}
+.setup-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;max-width:580px;width:100%;box-shadow:var(--shadow)}
+.setup-title{font-size:20px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.setup-title i{color:var(--blue);font-size:22px}
+.setup-subtitle{font-size:13px;color:var(--text3);margin-bottom:24px;line-height:1.6}
+.setup-steps{margin-bottom:24px}
+.setup-step{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.step-num{background:var(--blue-dim);color:var(--blue-text);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.step-body{flex:1}
+.step-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.step-desc{font-size:12px;color:var(--text3);line-height:1.6}
+.step-desc a{color:var(--blue);text-decoration:none}
+.step-desc a:hover{text-decoration:underline}
+.step-desc code{background:var(--bg3);padding:1px 5px;border-radius:4px;font-size:11px;color:var(--blue-text)}
+.config-area{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--radius);padding:14px;margin-top:8px}
+.config-area textarea{width:100%;background:transparent;border:none;color:var(--text);font-family:'Courier New',monospace;font-size:12px;resize:vertical;min-height:160px;line-height:1.5}
+.config-area textarea:focus{outline:none}
+.config-area textarea::placeholder{color:var(--text3)}
+.setup-err{color:var(--red-text);font-size:12px;padding:8px 11px;background:var(--red-dim);border-radius:var(--radius);border:1px solid #5c1e1e;margin-bottom:12px}
+.setup-footer{display:flex;justify-content:flex-end;gap:8px}
+/* Layout */
 .main{display:flex;flex:1;overflow:hidden}
-
-/* ── Sidebar ── */
 .sidebar{width:222px;min-width:222px;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sidebar-label{padding:10px 14px 6px;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid var(--border);flex-shrink:0}
 .sidebar-list{flex:1;overflow-y:auto}
 .sidebar-list::-webkit-scrollbar{width:4px}
-.sidebar-list::-webkit-scrollbar-track{background:transparent}
 .sidebar-list::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-
 .office-item{padding:9px 14px;cursor:pointer;border-left:3px solid transparent;display:flex;align-items:center;gap:7px;font-size:13px;transition:background .12s;color:var(--text2)}
 .office-item:hover{background:var(--bg3);color:var(--text)}
 .office-item:hover .office-edit-btn{opacity:1}
@@ -78,33 +87,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .office-name-wrap{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .office-edit-btn{background:none;border:none;cursor:pointer;color:var(--text3);font-size:13px;opacity:0;padding:2px 4px;border-radius:4px;line-height:1;transition:opacity .15s}
 .office-edit-btn:hover{background:var(--border2);color:var(--text)}
-
 .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.dot-red   {background:var(--red)}
-.dot-amber {background:var(--amber)}
-.dot-green {background:var(--green)}
-.dot-gray  {background:var(--text3)}
-
+.dot-red{background:var(--red)}.dot-amber{background:var(--amber)}.dot-green{background:var(--green)}.dot-gray{background:var(--text3)}
 .sidebar-footer{padding:10px 12px;border-top:1px solid var(--border);flex-shrink:0}
-
-/* ── Content ── */
 .content{flex:1;overflow-y:auto;padding:22px 24px;background:var(--bg)}
 .content::-webkit-scrollbar{width:5px}
-.content::-webkit-scrollbar-track{background:transparent}
 .content::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-
 .office-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
-.office-title{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px;color:var(--text)}
+.office-title{font-size:19px;font-weight:700;display:flex;align-items:center;gap:9px}
 .office-title i{font-size:19px;color:var(--blue)}
 .office-header-actions{margin-left:auto;display:flex;gap:8px}
-
-/* ── Stats ── */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}
 .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px}
 .stat-label{font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.06em;font-weight:600}
 .stat-value{font-size:24px;font-weight:700}
-
-/* ── Table ── */
 .task-table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
 table{width:100%;border-collapse:collapse;table-layout:fixed}
 th{font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.09em;padding:9px 13px;border-bottom:1px solid var(--border);text-align:left;background:var(--bg3)}
@@ -114,33 +110,23 @@ tr:hover td{background:var(--bg3)}
 .col-name{width:28%}.col-cat{width:11%}.col-freq{width:10%}.col-last{width:13%}.col-next{width:13%}.col-status{width:14%}.col-act{width:11%}
 .task-name{font-weight:600;font-size:13px;margin-bottom:2px;color:var(--text)}
 .task-notes{font-size:11px;color:var(--text3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
-/* ── Pills ── */
 .pill{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
-.pill-red   {background:var(--red-dim);   color:var(--red-text)}
-.pill-amber {background:var(--amber-dim); color:var(--amber-text)}
-.pill-green {background:var(--green-dim); color:var(--green-text)}
-.pill-gray  {background:var(--gray-dim);  color:var(--gray-text)}
-.pill-blue  {background:var(--blue-dim);  color:var(--blue-text)}
-
-/* ── Icon Buttons ── */
+.pill-red{background:var(--red-dim);color:var(--red-text)}
+.pill-amber{background:var(--amber-dim);color:var(--amber-text)}
+.pill-green{background:var(--green-dim);color:var(--green-text)}
+.pill-gray{background:var(--gray-dim);color:var(--gray-text)}
+.pill-blue{background:var(--blue-dim);color:var(--blue-text)}
 .row-actions{display:flex;gap:4px;align-items:center}
 .icon-btn{background:none;border:1px solid transparent;cursor:pointer;color:var(--text3);padding:4px 6px;border-radius:6px;font-size:15px;line-height:1;transition:all .12s}
 .icon-btn:hover{background:var(--bg4);border-color:var(--border2);color:var(--text)}
 .done-btn:hover{background:var(--green-dim)!important;color:var(--green)!important;border-color:#1e5c36!important}
-.del-btn:hover {background:var(--red-dim)!important; color:var(--red)!important;  border-color:#5c1e1e!important}
-
-/* ── Buttons ── */
+.del-btn:hover{background:var(--red-dim)!important;color:var(--red)!important;border-color:#5c1e1e!important}
 .btn{padding:7px 14px;border-radius:var(--radius);font-size:13px;cursor:pointer;font-family:inherit;border:1px solid var(--border2);background:var(--bg3);color:var(--text);transition:all .12s;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-weight:500}
-.btn:hover{background:var(--bg4);border-color:var(--border2)}
+.btn:hover{background:var(--bg4)}
 .btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
-.btn-primary:hover{background:#3a7af0;border-color:#3a7af0}
+.btn-primary:hover{background:#3a7af0}
 .btn-danger{background:var(--red-dim);color:var(--red-text);border-color:#5c1e1e}
-.btn-danger:hover{background:#3d1212;border-color:#7a2828}
-.btn-gdrive{background:#1a73e8;color:#fff;border-color:#1a73e8}
-.btn-gdrive:hover{background:#1558b0}
-.btn-gdrive-out{background:var(--blue-dim);color:var(--blue-text);border-color:#2a3d70}
-.btn-gdrive-out:hover{background:#1e2d52}
+.btn-danger:hover{background:#3d1212}
 .btn-export{background:var(--green-dim);color:var(--green-text);border-color:#1e5c36}
 .btn-export:hover{background:#0a2415}
 .btn-import{background:var(--purple-dim);color:#b8a3fd;border-color:#3a2870}
@@ -148,24 +134,17 @@ tr:hover td{background:var(--bg3)}
 .btn-sm{padding:5px 11px;font-size:12px}
 .btn-block{width:100%;justify-content:center}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-
-/* ── Section Divider ── */
 .section-divider{padding:6px 13px;font-size:10px;font-weight:700;color:var(--text3);background:var(--bg3);border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.09em}
-
-/* ── Frequency input ── */
 .freq-cell{display:flex;align-items:center;gap:5px}
 .freq-input{width:56px;padding:3px 7px;border:1px solid var(--border2);border-radius:6px;font-size:12px;font-family:inherit;background:var(--bg3);color:var(--text)}
 .freq-input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 2px rgba(79,142,247,.2)}
 .freq-unit{font-size:11px;color:var(--text3)}
-
-/* ── Overlay / Modal ── */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(3px)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;z-index:200;backdrop-filter:blur(3px)}
 .modal{background:var(--bg2);border-radius:var(--radius-lg);border:1px solid var(--border);padding:24px;width:450px;max-width:96vw;max-height:92vh;overflow-y:auto;box-shadow:0 16px 60px rgba(0,0,0,.6)}
 .modal::-webkit-scrollbar{width:4px}
 .modal::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
-.modal-title{font-size:16px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:9px;color:var(--text)}
+.modal-title{font-size:16px;font-weight:700;margin-bottom:18px;display:flex;align-items:center;gap:9px}
 .modal-title i{color:var(--blue);font-size:18px}
-.modal-subtitle{font-size:12px;color:var(--text3);margin-bottom:18px;line-height:1.5}
 .form-group{margin-bottom:14px}
 .form-label{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:5px;display:block}
 .form-input{width:100%;padding:8px 11px;border:1px solid var(--border2);border-radius:var(--radius);font-size:13px;font-family:inherit;background:var(--bg3);color:var(--text)}
@@ -174,521 +153,596 @@ textarea.form-input{resize:vertical}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:18px;padding-top:14px;border-top:1px solid var(--border)}
 .err-msg{color:var(--red-text);font-size:12px;margin-bottom:10px;padding:8px 11px;background:var(--red-dim);border-radius:var(--radius);border:1px solid #5c1e1e}
-.ok-msg{color:var(--green-text);font-size:12px;margin-bottom:10px;padding:8px 11px;background:var(--green-dim);border-radius:var(--radius);border:1px solid #1e5c36}
 .hint{font-size:11px;color:var(--text3);margin-top:4px;line-height:1.4}
-.info-box{background:var(--blue-dim);border:1px solid #2a3d70;border-radius:var(--radius);padding:11px 13px;font-size:12px;color:var(--blue-text);margin-bottom:14px;line-height:1.7}
-.info-box a{color:var(--blue);font-weight:600}
-.info-box ol{margin-left:16px;margin-top:5px}
-.info-box li{margin-bottom:3px}
-.warn-box{background:var(--amber-dim);border:1px solid #5c3a05;border-radius:var(--radius);padding:11px 13px;font-size:12px;color:var(--amber-text);margin-bottom:14px;line-height:1.6}
-
-/* ── Inline rename ── */
 .inline-edit{border:1px solid var(--blue);border-radius:6px;padding:3px 8px;font-size:13px;font-family:inherit;background:var(--bg4);color:var(--text);width:130px}
 .inline-edit:focus{outline:none;box-shadow:0 0 0 2px rgba(79,142,247,.25)}
-
-/* ── Empty state ── */
 .empty{text-align:center;padding:60px 20px;color:var(--text3)}
 .empty i{font-size:44px;display:block;margin-bottom:12px;opacity:.2}
-.empty p{font-size:14px}
-
-/* ── Toast ── */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--bg4);color:var(--text);padding:11px 18px;border-radius:var(--radius);font-size:13px;z-index:999;box-shadow:var(--shadow);display:flex;align-items:center;gap:9px;border:1px solid var(--border2);animation:slideUp .2s ease;font-weight:500}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--bg4);color:var(--text);padding:11px 18px;border-radius:var(--radius);font-size:13px;z-index:999;box-shadow:var(--shadow);display:flex;align-items:center;gap:9px;border:1px solid var(--border2);animation:fadeIn .2s ease;font-weight:500}
 .toast.success{background:var(--green-dim);color:var(--green-text);border-color:#1e5c36}
-.toast.error  {background:var(--red-dim);  color:var(--red-text);  border-color:#5c1e1e}
-@keyframes slideUp{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
-
-/* ── Scrollbar global ── */
+.toast.error{background:var(--red-dim);color:var(--red-text);border-color:#5c1e1e}
+@keyframes fadeIn{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
 </style>
-<style id="googleidentityservice_button_styles">.qJTHM{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;color:#202124;direction:ltr;-webkit-touch-callout:none;font-family:Roboto-Regular,arial,sans-serif;-webkit-font-smoothing:antialiased;font-weight:400;margin:0;overflow:hidden;-webkit-text-size-adjust:100%}.ynRLnc{left:-9999px;position:absolute;top:-9999px}.L6cTce{display:none}.bltWBb{overflow-wrap:break-word;word-break:break-word}.hSRGPd{color:#1a73e8;cursor:pointer;font-weight:500;text-decoration:none}.Bz112c-W3lGp{height:16px;width:16px}.Bz112c-E3DyYd{height:20px;width:20px}.Bz112c-r9oPif{height:24px;width:24px}.Bz112c-u2z5K{height:36px;width:36px}.Bz112c-uaxL4e{border-radius:10px}.LgbsSe-Bz112c{display:block}.S9gUrf-YoZ4jf{border:none;margin:0;padding:0}.S9gUrf-YoZ4jf *{border:none;margin:0;padding:0}.fFW7wc-ibnC6b>.aZ2wEe>div{border-color:#4285f4}.P1ekSe-ZMv3u{-webkit-transition:height .2s linear;transition:height .2s linear}.P1ekSe-ZMv3u>div:first-child{background-color:#1a73e8!important;-webkit-transition:width .3s linear;transition:width .3s linear}.P1ekSe-ZMv3u>div:nth-child(2){background-image:-webkit-gradient(linear,left top,right top,from(rgba(255,255,255,.7)),to(rgba(255,255,255,.7))),-webkit-gradient(linear,left top,right top,from(#1a73e8),to(#1a73e8))!important;background-image:-webkit-linear-gradient(left,rgba(255,255,255,.7),rgba(255,255,255,.7)),-webkit-linear-gradient(left,#1a73e8,#1a73e8)!important;background-image:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,.7)),linear-gradient(90deg,#1a73e8,#1a73e8)!important}.P1ekSe-ZMv3u>div:nth-child(3){background-image:-webkit-gradient(linear,left top,right top,from(rgba(255,255,255,.7)),to(rgba(255,255,255,.7))),-webkit-gradient(linear,left top,right top,from(#1a73e8),to(#1a73e8))!important;background-image:-webkit-linear-gradient(left,rgba(255,255,255,.7),rgba(255,255,255,.7)),-webkit-linear-gradient(left,#1a73e8,#1a73e8)!important;background-image:linear-gradient(90deg,rgba(255,255,255,.7),rgba(255,255,255,.7)),linear-gradient(90deg,#1a73e8,#1a73e8)!important}.haAclf{display:inline-block}.nsm7Bb-HzV7m-LgbsSe{border-radius:4px;box-sizing:border-box;-webkit-transition:background-color .218s,border-color .218s;transition:background-color .218s,border-color .218s;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;-webkit-appearance:none;background-color:#fff;background-image:none;border:1px solid #dadce0;color:#3c4043;cursor:pointer;font-family:Google Sans,arial,sans-serif;font-size:14px;height:40px;letter-spacing:.25px;outline:none;overflow:hidden;padding:0 12px;position:relative;text-align:center;vertical-align:middle;white-space:nowrap;width:auto}@media screen and (-ms-high-contrast:active){.nsm7Bb-HzV7m-LgbsSe{border:2px solid windowText;color:windowText}}@media screen and (preferes-contrast:more){.nsm7Bb-HzV7m-LgbsSe{color:#000}}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe{font-size:14px;height:32px;letter-spacing:.25px;padding:0 10px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe{font-size:11px;height:20px;letter-spacing:.3px;padding:0 8px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe{padding:0;width:40px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe{width:32px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe{width:20px}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK{border-radius:20px}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.pSzOP-SxQuSe{border-radius:16px}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK.purZT-SxQuSe{border-radius:10px}.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc{border:none;color:#fff}.nsm7Bb-HzV7m-LgbsSe.MFS4be-v3pZbf-Ia7Qfc{background-color:#1a73e8}.nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc{background-color:#202124;color:#e8eaed}@media screen and (prefers-contrast:more){.nsm7Bb-HzV7m-LgbsSe.MFS4be-JaPV2b-Ia7Qfc{color:#fff}}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{height:18px;margin-right:8px;min-width:18px;width:18px}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{height:14px;min-width:14px;width:14px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{height:10px;min-width:10px;width:10px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c{margin-left:8px;margin-right:-4px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{margin:0;padding:10px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{padding:8px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c{padding:4px}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-top-left-radius:3px;border-bottom-left-radius:3px;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-webkit-align-items:center;align-items:center;background-color:#fff;height:36px;margin-left:-10px;margin-right:12px;min-width:36px;width:36px}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c,.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf .nsm7Bb-HzV7m-LgbsSe-Bz112c{margin:0;padding:0}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{height:28px;margin-left:-8px;margin-right:10px;min-width:28px;width:28px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{height:16px;margin-left:-6px;margin-right:8px;min-width:16px;width:16px}.nsm7Bb-HzV7m-LgbsSe.Bz112c-LgbsSe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:3px;margin-left:2px;margin-right:0;padding:0}.nsm7Bb-HzV7m-LgbsSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:18px}.nsm7Bb-HzV7m-LgbsSe.pSzOP-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:14px}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:8px}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-bN97Pc-sM5MNb{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-align-items:center;-webkit-box-align:center;align-items:center;-webkit-flex-direction:row;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;-webkit-flex-wrap:nowrap;flex-wrap:nowrap;height:100%;position:relative;width:100%}.nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX{-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-BPrWId{-webkit-flex-grow:1;-webkit-box-flex:1;flex-grow:1;font-family:Google Sans,arial,sans-serif;font-weight:500;overflow:hidden;text-overflow:ellipsis;vertical-align:top}.nsm7Bb-HzV7m-LgbsSe.purZT-SxQuSe .nsm7Bb-HzV7m-LgbsSe-BPrWId{font-weight:300}.nsm7Bb-HzV7m-LgbsSe .oXtfBe-l4eHX .nsm7Bb-HzV7m-LgbsSe-BPrWId{-webkit-flex-grow:0;-webkit-box-flex:0;flex-grow:0}.nsm7Bb-HzV7m-LgbsSe .nsm7Bb-HzV7m-LgbsSe-MJoBVe{-webkit-transition:background-color .218s;transition:background-color .218s;bottom:0;left:0;position:absolute;right:0;top:0}.nsm7Bb-HzV7m-LgbsSe:focus,.nsm7Bb-HzV7m-LgbsSe:hover{box-shadow:none;border-color:rgb(210,227,252);outline:none}.nsm7Bb-HzV7m-LgbsSe:focus-within{outline:2px solid #00639b;border-color:transparent}.nsm7Bb-HzV7m-LgbsSe:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(66,133,244,.08)}.nsm7Bb-HzV7m-LgbsSe:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,.nsm7Bb-HzV7m-LgbsSe:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(66,133,244,.1)}.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:hover .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(255,255,255,.24)}.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:active .nsm7Bb-HzV7m-LgbsSe-MJoBVe,.nsm7Bb-HzV7m-LgbsSe.MFS4be-Ia7Qfc:focus .nsm7Bb-HzV7m-LgbsSe-MJoBVe{background:rgba(255,255,255,.32)}.nsm7Bb-HzV7m-LgbsSe .n1UuX-DkfjY{border-radius:50%;display:-webkit-box;display:-webkit-flex;display:flex;height:20px;margin-left:-4px;margin-right:8px;min-width:20px;width:20px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId{font-family:Roboto;font-size:12px;text-align:left}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .fmcmS,.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .ssJRIf{overflow:hidden;text-overflow:ellipsis}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-align-items:center;-webkit-box-align:center;align-items:center;color:#5f6368;fill:#5f6368;font-size:11px;font-weight:400}.nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff{color:#e8eaed;fill:#e8eaed}@media screen and (prefers-contrast:more){.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff,.nsm7Bb-HzV7m-LgbsSe.jVeSEe.MFS4be-Ia7Qfc .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff{color:#000;fill:#000}}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-BPrWId .K4efff .Bz112c{height:18px;margin:-3px -3px -3px 2px;min-width:18px;width:18px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-top-left-radius:0;border-bottom-left-radius:0;border-top-right-radius:3px;border-bottom-right-radius:3px;margin-left:12px;margin-right:-10px}.nsm7Bb-HzV7m-LgbsSe.jVeSEe.JGcpL-RbRzK .nsm7Bb-HzV7m-LgbsSe-Bz112c-haAclf{border-radius:18px}.L5Fo6c-sM5MNb{border:0;display:block;left:0;position:relative;top:0}.L5Fo6c-bF1uUb{border-radius:4px;bottom:0;cursor:pointer;left:0;position:absolute;right:0;top:0}.L5Fo6c-bF1uUb:focus{border:none;outline:none}sentinel{}</style></head>
+</head>
 <body>
-<div id="root"><div class="app"><div class="header"><div class="header-logo"><i class="ti ti-tool"></i>Facility Maintenance Tracker</div><div class="header-badges"><span class="badge badge-blue">11 Offices</span><span class="badge badge-red">8 Overdue</span><span class="badge badge-amber">2 Due Soon</span><span class="badge badge-green">19 On Track</span></div><div class="header-actions"><button class="btn btn-sm btn-export"><i class="ti ti-download"></i>Export</button><button class="btn btn-sm btn-import"><i class="ti ti-upload"></i>Import</button><input type="file" accept=".json" style="display: none;"><div class="header-divider"></div><button class="btn btn-sm btn-gdrive"><i class="ti ti-brand-google-drive"></i>Google Drive</button></div></div><div class="main"><div class="sidebar"><div class="sidebar-label">Offices</div><div class="sidebar-list"><div class="office-item"><span class="office-name-wrap">Admin 1090</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-green"></span></div><div class="office-item"><span class="office-name-wrap">East</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-green"></span></div><div class="office-item"><span class="office-name-wrap">Henderson</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-red"></span></div><div class="office-item active"><span class="office-name-wrap">Pahrump</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-gray"></span></div><div class="office-item"><span class="office-name-wrap">South West</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-red"></span></div><div class="office-item"><span class="office-name-wrap">Edna</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-red"></span></div><div class="office-item"><span class="office-name-wrap">7190 Smoke Ranch</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-red"></span></div><div class="office-item"><span class="office-name-wrap">7106 Smoke Ranch</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-red"></span></div><div class="office-item"><span class="office-name-wrap">Surgery Center</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-red"></span></div><div class="office-item"><span class="office-name-wrap">Camino</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-green"></span></div><div class="office-item"><span class="office-name-wrap">Centennial</span><button class="office-edit-btn" title="Rename office"><i class="ti ti-pencil"></i></button><span class="dot dot-red"></span></div></div><div class="sidebar-footer"><button class="btn btn-sm btn-block"><i class="ti ti-plus"></i> Add Office</button></div></div><div class="content"><div><div class="office-header"><div class="office-title"><i class="ti ti-building"></i>Pahrump</div><div class="office-header-actions"><button class="btn btn-sm btn-primary"><i class="ti ti-plus"></i>Add Task</button><button class="btn btn-sm btn-danger"><i class="ti ti-trash"></i>Delete Office</button></div></div><div class="stats-row"><div class="stat-card"><div class="stat-label">Overdue</div><div class="stat-value" style="color: var(--red);">0</div></div><div class="stat-card"><div class="stat-label">Due Soon</div><div class="stat-value" style="color: var(--amber);">0</div></div><div class="stat-card"><div class="stat-label">On Track</div><div class="stat-value" style="color: var(--green);">0</div></div><div class="stat-card"><div class="stat-label">Unscheduled</div><div class="stat-value" style="color: var(--text3);">8</div></div></div><div class="task-table-wrap"><table><thead><tr><th class="col-name">Task</th><th class="col-cat">Category</th><th class="col-freq">Frequency</th><th class="col-last">Last Done</th><th class="col-next">Next Due</th><th class="col-status">Status</th><th class="col-act">Actions</th></tr></thead><tbody><tr><td colspan="7" style="padding: 0px;"><div class="section-divider">Standard Tasks</div></td></tr><tr><td class="col-name"><div class="task-name">HVAC Filter Replacement</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">HVAC</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="90"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr><tr><td class="col-name"><div class="task-name">Water Filter Replacement</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">Plumbing</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="180"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr><tr><td class="col-name"><div class="task-name">Floor Cleaning Timesheet</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">Janitorial</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="7"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr><tr><td class="col-name"><div class="task-name">HVAC Maintenance</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">HVAC</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="365"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr><tr><td class="col-name"><div class="task-name">Fire Extinguisher Inspection</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">Safety</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="365"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr><tr><td class="col-name"><div class="task-name">Window Cleaning</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">Janitorial</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="90"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr><tr><td class="col-name"><div class="task-name">Sharp Container Pickup</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">Medical Waste</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="30"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr><tr><td class="col-name"><div class="task-name">Shred Pickup</div></td><td class="col-cat"><span class="badge badge-gray" style="font-size: 10px;">Security</span></td><td class="col-freq"><div class="freq-cell"><input class="freq-input" type="number" min="1" title="Edit frequency in days" value="30"><span class="freq-unit">d</span></div></td><td class="col-last" style="font-size: 12px; color: var(--text2);">—</td><td class="col-next" style="font-size: 12px; color: var(--text2);">—</td><td class="col-status"><span class="pill pill-gray">Not scheduled</span></td><td class="col-act"><div class="row-actions"><button class="icon-btn done-btn" title="Mark done today"><i class="ti ti-check"></i></button><button class="icon-btn" title="Edit dates &amp; notes"><i class="ti ti-calendar"></i></button></div></td></tr></tbody></table></div></div></div></div></div></div>
+<div id="root">
+  <div class="loading-screen">
+    <div class="loading-spinner"></div>
+    <div class="loading-status">Loading libraries…</div>
+  </div>
+</div>
 
-<script src="./Facility Maintenance Tracker_files/client" async=""></script>
-<script src="./Facility Maintenance Tracker_files/react.production.min.js.download"></script>
-<script src="./Facility Maintenance Tracker_files/react-dom.production.min.js.download"></script>
+<!-- ── Library loading with automatic fallbacks ── -->
 <script>
-(function(){
-'use strict';
-if(typeof React==='undefined'||typeof ReactDOM==='undefined'){
-  document.getElementById('root').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;text-align:center;padding:20px;background:#0f1117;color:#e8eaf0"><div><h2 style="color:#f45b5b;margin-bottom:12px">Could not load React</h2><p style="color:#9ba3bf">This app needs an internet connection the first time it opens.<br>Please check your connection and reload the page.</p></div></div>';
-  return;
+// Tracks which libraries loaded successfully
+window._libs = { react: false, reactdom: false, firebase: false };
+
+function updateStatus(msg) {
+  var el = document.querySelector('.loading-status');
+  if (el) el.textContent = msg;
 }
 
-var e=React.createElement,useState=React.useState,useEffect=React.useEffect,useRef=React.useRef;
-
-/* ─── Constants ─── */
-var STORAGE_KEY='fac-tracker-v5';
-var GDRIVE_FILE_NAME='maintenance_tracker_data.json';
-var GDRIVE_SCOPE='https://www.googleapis.com/auth/drive.file';
-
-var DEFAULT_TASKS=[
-  {id:'hvac-filter', name:'HVAC Filter Replacement',      category:'HVAC',          intervalDays:90,  builtIn:true},
-  {id:'water-filter',name:'Water Filter Replacement',     category:'Plumbing',      intervalDays:180, builtIn:true},
-  {id:'floor-clean', name:'Floor Cleaning Timesheet',     category:'Janitorial',    intervalDays:7,   builtIn:true},
-  {id:'hvac-maint',  name:'HVAC Maintenance',             category:'HVAC',          intervalDays:365, builtIn:true},
-  {id:'fire-ext',    name:'Fire Extinguisher Inspection', category:'Safety',        intervalDays:365, builtIn:true},
-  {id:'window-clean',name:'Window Cleaning',              category:'Janitorial',    intervalDays:90,  builtIn:true},
-  {id:'sharp-pickup',name:'Sharp Container Pickup',       category:'Medical Waste', intervalDays:30,  builtIn:true},
-  {id:'shred-pickup',name:'Shred Pickup',                 category:'Security',      intervalDays:30,  builtIn:true},
-];
-var DEFAULT_NAMES=['Office 101','Office 102','Office 103','Office 104','Office 105','Office 106','Office 107','Office 108','Office 109','Office 110','Office 111','Office 112','Office 113','Office 114','Office 115'];
-var BUILTIN_IDS=DEFAULT_TASKS.map(function(t){return t.id;});
-
-/* ─── Helpers ─── */
-function makeRec(){return{lastDone:'',nextDue:'',notes:'',customInterval:null};}
-function makeOffice(name,seed){var tasks={};DEFAULT_TASKS.forEach(function(t){tasks[t.id]=makeRec();});return{id:'off-'+(Date.now()+seed),name:name,tasks:tasks,customTaskDefs:[]};}
-function addDaysToToday(n){var d=new Date();d.setDate(d.getDate()+n);return d.toISOString().split('T')[0];}
-function todayStr(){return new Date().toISOString().split('T')[0];}
-function fmtDate(s){if(!s)return'—';var d=new Date(s+'T12:00:00');return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'});}
-function daysUntil(s){if(!s)return null;return Math.round((new Date(s)-new Date(new Date().toDateString()))/86400000);}
-function getStatus(rec){
-  if(!rec||(!rec.lastDone&&!rec.nextDue))return{label:'Not scheduled',cls:'pill-gray'};
-  if(!rec.nextDue)return{label:'No due date',cls:'pill-blue'};
-  var d=daysUntil(rec.nextDue);
-  if(d<0)return{label:'Overdue '+Math.abs(d)+'d',cls:'pill-red'};
-  if(d<=7)return{label:'Due in '+d+'d',cls:'pill-amber'};
-  return{label:'Due in '+d+'d',cls:'pill-green'};
-}
-function getAllTasks(o){return DEFAULT_TASKS.concat(o.customTaskDefs||[]);}
-function getInterval(rec,td){return(rec&&rec.customInterval)?rec.customInterval:td.intervalDays;}
-function officeDot(o){
-  var r=false,a=false,any=false;
-  getAllTasks(o).forEach(function(t){var rec=o.tasks[t.id]||{};if(rec.lastDone)any=true;var s=getStatus(rec);if(s.cls==='pill-red')r=true;if(s.cls==='pill-amber')a=true;});
-  return r?'dot-red':a?'dot-amber':any?'dot-green':'dot-gray';
-}
-function mg(a,b){return Object.assign({},a,b);}
-function loadLocal(){try{var r=localStorage.getItem(STORAGE_KEY);return r?JSON.parse(r):null;}catch(x){return null;}}
-function saveLocal(d){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(d));}catch(x){}}
-function getStoredClientId(){try{return localStorage.getItem('gdrive-cid-v2')||'';}catch(x){return'';}}
-function storeClientId(v){try{localStorage.setItem('gdrive-cid-v2',v);}catch(x){}}
-
-/* ─── Google Drive ─── */
-var _gToken=null;
-function initTokenClient(cid,cb){
-  if(typeof google==='undefined'||!google.accounts){cb(new Error('Google Identity Services not loaded. Check your internet connection.'));return;}
-  try{
-    google.accounts.oauth2.initTokenClient({client_id:cid,scope:GDRIVE_SCOPE,
-      callback:function(r){if(r.error){cb(new Error(r.error_description||r.error));return;}_gToken=r.access_token;cb(null,r.access_token);}
-    }).requestAccessToken({prompt:'consent'});
-  }catch(x){cb(x);}
-}
-function findFile(tok){
-  return fetch("https://www.googleapis.com/drive/v3/files?q=name%3D'"+GDRIVE_FILE_NAME+"'+and+trashed%3Dfalse&fields=files(id,name)",{headers:{'Authorization':'Bearer '+tok}})
-    .then(function(r){return r.json();}).then(function(d){return(d.files&&d.files.length)?d.files[0].id:null;});
-}
-function uploadToDrive(tok,data,eid){
-  var content=JSON.stringify(data),boundary='bnd789';
-  var meta=JSON.stringify({name:GDRIVE_FILE_NAME,mimeType:'application/json'});
-  var body='--'+boundary+'\r\nContent-Type: application/json\r\n\r\n'+meta+'\r\n--'+boundary+'\r\nContent-Type: application/json\r\n\r\n'+content+'\r\n--'+boundary+'--';
-  return fetch((eid?'https://www.googleapis.com/upload/drive/v3/files/'+eid:'https://www.googleapis.com/upload/drive/v3/files')+'?uploadType=multipart',
-    {method:eid?'PATCH':'POST',headers:{'Authorization':'Bearer '+tok,'Content-Type':'multipart/related; boundary='+boundary},body:body}).then(function(r){return r.json();});
-}
-function downloadFromDrive(tok,fid){
-  return fetch('https://www.googleapis.com/drive/v3/files/'+fid+'?alt=media',{headers:{'Authorization':'Bearer '+tok}}).then(function(r){return r.json();});
+function showFatalError() {
+  document.getElementById('root').innerHTML =
+    '<div class="error-screen">' +
+    '<div class="error-card">' +
+    '<i class="ti ti-wifi-off"></i>' +
+    '<h2>Could Not Load Libraries</h2>' +
+    '<p>The app tried 3 different servers to load React and Firebase but all failed.<br><br>' +
+    'Please check your internet connection and try reloading. If the problem persists, try opening the app in an Incognito window.</p>' +
+    '<button onclick="location.reload()">&#8635; Reload Page</button>' +
+    '</div></div>';
 }
 
-/* ─── Toast ─── */
-function Toast(p){
-  useEffect(function(){var t=setTimeout(p.onClose,3200);return function(){clearTimeout(t);};},[]);
-  return e('div',{className:'toast '+(p.type||'')},e('i',{className:p.type==='success'?'ti ti-circle-check':p.type==='error'?'ti ti-circle-x':'ti ti-info-circle'}),p.message);
-}
-
-/* ─── TaskRow ─── */
-function TaskRow(p){
-  var td=p.td,rec=p.rec;
-  var fv=useState(p.interval);var freqVal=fv[0];var setFreqVal=fv[1];
-  useEffect(function(){setFreqVal(p.interval);},[p.interval]);
-  function commit(){var n=parseInt(freqVal);if(n&&n>0)p.onFreqChange(n);else setFreqVal(p.interval);}
-  var st=getStatus(rec);
-  return e('tr',null,
-    e('td',{className:'col-name'},
-      e('div',{className:'task-name'},td.name),
-      rec.notes&&e('div',{className:'task-notes'},e('i',{className:'ti ti-notes',style:{fontSize:11,marginRight:3}}),rec.notes)
-    ),
-    e('td',{className:'col-cat'},e('span',{className:'badge badge-gray',style:{fontSize:10}},td.category)),
-    e('td',{className:'col-freq'},
-      e('div',{className:'freq-cell'},
-        e('input',{className:'freq-input',type:'number',min:1,value:freqVal,title:'Edit frequency in days',
-          onChange:function(ev){setFreqVal(ev.target.value);},
-          onBlur:commit,
-          onKeyDown:function(ev){if(ev.key==='Enter')ev.target.blur();}}),
-        e('span',{className:'freq-unit'},'d')
-      )
-    ),
-    e('td',{className:'col-last',style:{fontSize:12,color:'var(--text2)'}},fmtDate(rec.lastDone)),
-    e('td',{className:'col-next',style:{fontSize:12,color:'var(--text2)'}},fmtDate(rec.nextDue)),
-    e('td',{className:'col-status'},e('span',{className:'pill '+st.cls},st.label)),
-    e('td',{className:'col-act'},
-      e('div',{className:'row-actions'},
-        e('button',{className:'icon-btn done-btn',title:'Mark done today',onClick:p.onDone},e('i',{className:'ti ti-check'})),
-        e('button',{className:'icon-btn',title:'Edit dates & notes',onClick:p.onEdit},e('i',{className:'ti ti-calendar'})),
-        p.isCustom&&e('button',{className:'icon-btn del-btn',title:'Delete task',onClick:p.onDelete},e('i',{className:'ti ti-trash'}))
-      )
-    )
-  );
-}
-
-/* ─── OfficeDetail ─── */
-function OfficeDetail(p){
-  var o=p.office,all=getAllTasks(o);
-  var over=0,soon=0,ok=0,ns=0;
-  all.forEach(function(t){var s=getStatus(o.tasks[t.id]);if(s.cls==='pill-red')over++;else if(s.cls==='pill-amber')soon++;else if(s.cls==='pill-green')ok++;else ns++;});
-  function onFreq(taskId,n){
-    var rec=o.tasks[taskId]||makeRec(),f={customInterval:n};
-    if(rec.lastDone){var nd=new Date(rec.lastDone+'T12:00:00');nd.setDate(nd.getDate()+n);f.nextDue=nd.toISOString().split('T')[0];}
-    p.updateTaskRec(o.id,taskId,f);
+// Load a script from a list of URLs, trying each one until success
+function loadScriptWithFallbacks(urls, onSuccess, onFail) {
+  var idx = 0;
+  function tryNext() {
+    if (idx >= urls.length) { onFail(); return; }
+    var url = urls[idx++];
+    var s = document.createElement('script');
+    s.src = url;
+    s.onload = onSuccess;
+    s.onerror = function() { tryNext(); };
+    document.head.appendChild(s);
   }
-  var custom=all.filter(function(t){return BUILTIN_IDS.indexOf(t.id)===-1;});
-  function row(td,isCust){
-    var rec=o.tasks[td.id]||makeRec();
-    return e(TaskRow,{key:td.id,td:td,rec:rec,isCustom:isCust,interval:getInterval(rec,td),
-      onDone:function(){p.markDone(o.id,td.id);},onEdit:function(){p.onEditTask(td);},
-      onDelete:function(){p.deleteTask(o.id,td.id);},onFreqChange:function(n){onFreq(td.id,n);}});
-  }
-  return e('div',null,
-    e('div',{className:'office-header'},
-      e('div',{className:'office-title'},e('i',{className:'ti ti-building'}),o.name),
-      e('div',{className:'office-header-actions'},
-        e('button',{className:'btn btn-sm btn-primary',onClick:p.onAddTask},e('i',{className:'ti ti-plus'}),'Add Task'),
-        e('button',{className:'btn btn-sm btn-danger',onClick:p.onDeleteOffice},e('i',{className:'ti ti-trash'}),'Delete Office')
-      )
-    ),
-    e('div',{className:'stats-row'},
-      e('div',{className:'stat-card'},e('div',{className:'stat-label'},'Overdue'),    e('div',{className:'stat-value',style:{color:'var(--red)'}},  over)),
-      e('div',{className:'stat-card'},e('div',{className:'stat-label'},'Due Soon'),   e('div',{className:'stat-value',style:{color:'var(--amber)'}},soon)),
-      e('div',{className:'stat-card'},e('div',{className:'stat-label'},'On Track'),   e('div',{className:'stat-value',style:{color:'var(--green)'}},ok)),
-      e('div',{className:'stat-card'},e('div',{className:'stat-label'},'Unscheduled'),e('div',{className:'stat-value',style:{color:'var(--text3)'}},ns))
-    ),
-    e('div',{className:'task-table-wrap'},
-      e('table',null,
-        e('thead',null,e('tr',null,
-          e('th',{className:'col-name'},'Task'),e('th',{className:'col-cat'},'Category'),
-          e('th',{className:'col-freq'},'Frequency'),e('th',{className:'col-last'},'Last Done'),
-          e('th',{className:'col-next'},'Next Due'),e('th',{className:'col-status'},'Status'),e('th',{className:'col-act'},'Actions')
-        )),
-        e('tbody',null,
-          e('tr',null,e('td',{colSpan:7,style:{padding:0}},e('div',{className:'section-divider'},'Standard Tasks'))),
-          DEFAULT_TASKS.map(function(td){return row(td,false);}),
-          custom.length>0&&e('tr',null,e('td',{colSpan:7,style:{padding:0}},e('div',{className:'section-divider'},'Custom Tasks'))),
-          custom.map(function(td){return row(td,true);})
-        )
-      )
-    )
-  );
+  tryNext();
 }
+</script>
 
-/* ─── Task / Office Modal ─── */
-function Modal(p){
-  var modal=p.modal,offices=p.offices;
-  var n1=useState('');var name=n1[0];var setName=n1[1];
-  var n2=useState('');var cat=n2[0];var setCat=n2[1];
-  var n3=useState(30);var intv=n3[0];var setIntv=n3[1];
-  var n4=useState('');var ld=n4[0];var setLd=n4[1];
-  var n5=useState('');var nd=n5[0];var setNd=n5[1];
-  var n6=useState('');var notes=n6[0];var setNotes=n6[1];
-  var n7=useState('');var err=n7[0];var setErr=n7[1];
-  var office=modal.officeId?offices.find(function(o){return o.id===modal.officeId;}):null;
-  useEffect(function(){
-    if(modal.type==='edit-task'&&office&&modal.task){
-      var td=modal.task,rec=office.tasks[td.id]||{};
-      setName(td.name||'');setCat(td.category||'');setIntv(rec.customInterval||td.intervalDays||30);
-      setLd(rec.lastDone||'');setNd(rec.nextDue||'');setNotes(rec.notes||'');
+<!-- Step 1: Load React with 3 CDN fallbacks -->
+<script>
+updateStatus('Loading React…');
+loadScriptWithFallbacks([
+  'https://unpkg.com/react@18.3.1/umd/react.production.min.js',
+  'https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/umd/react.production.min.js'
+], function() {
+  window._libs.react = true;
+  updateStatus('Loading ReactDOM…');
+
+  // Step 2: Load ReactDOM
+  loadScriptWithFallbacks([
+    'https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js',
+    'https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.3.1/umd/react-dom.production.min.js'
+  ], function() {
+    window._libs.reactdom = true;
+    updateStatus('Loading Firebase…');
+
+    // Step 3: Load Firebase App
+    loadScriptWithFallbacks([
+      'https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js',
+      'https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-app-compat.js'
+    ], function() {
+
+      // Step 4: Load Firestore
+      loadScriptWithFallbacks([
+        'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js',
+        'https://cdn.jsdelivr.net/npm/firebase@10.12.2/firebase-firestore-compat.js'
+      ], function() {
+        window._libs.firebase = true;
+        updateStatus('Starting app…');
+
+        // Step 5: Load & run the app
+        loadScriptWithFallbacks(
+          ['app.js'],
+          function() { /* app.js loaded */ },
+          function() {
+            // app.js not found — run inline
+            if (window._runApp) window._runApp();
+          }
+        );
+        // Always try inline as well
+        setTimeout(function() {
+          if (window._runApp) window._runApp();
+        }, 300);
+
+      }, function() { showFatalError(); });
+    }, function() { showFatalError(); });
+
+  }, function() { showFatalError(); });
+}, function() { showFatalError(); });
+</script>
+
+<!-- ── App Logic ── -->
+<script>
+window._runApp = (function() {
+  var ran = false;
+  return function() {
+    if (ran) return;
+    ran = true;
+
+    if (typeof React === 'undefined' || typeof ReactDOM === 'undefined') {
+      showFatalError(); return;
     }
-  },[]);
-  function submit(){
-    var n=parseInt(intv);
-    if(modal.type==='add-office'){if(!name.trim()){setErr('Office name is required');return;}p.addOffice(name.trim());p.setModal(null);}
-    else if(modal.type==='add-task'){
-      if(!name.trim()){setErr('Task name is required');return;}
-      if(!n||n<1){setErr('Frequency must be at least 1 day');return;}
-      p.addTask(modal.officeId,{name:name.trim(),category:cat.trim()||'Custom',intervalDays:n});p.setModal(null);
-    }else if(modal.type==='edit-task'){
-      if(!n||n<1){setErr('Frequency must be at least 1 day');return;}
-      var tid=modal.task.id,isCust=BUILTIN_IDS.indexOf(tid)===-1;
-      if(isCust)p.editTaskDef(modal.officeId,tid,{name:name.trim(),category:cat.trim(),intervalDays:n});
-      var f={notes:notes,customInterval:n};
-      if(ld)f.lastDone=ld;
-      if(nd){f.nextDue=nd;}else if(ld&&n){var c=new Date(ld+'T12:00:00');c.setDate(c.getDate()+n);f.nextDue=c.toISOString().split('T')[0];}
-      p.updateTaskRec(modal.officeId,tid,f);p.setModal(null);
-    }
-  }
-  var isOff=modal.type==='add-office',isAdd=modal.type==='add-task',isEdit=modal.type==='edit-task';
-  var isCustTask=isEdit&&BUILTIN_IDS.indexOf(modal.task.id)===-1;
-  return e('div',{className:'overlay',onClick:function(ev){if(ev.target===ev.currentTarget)p.setModal(null);}},
-    e('div',{className:'modal'},
-      e('div',{className:'modal-title'},e('i',{className:isOff?'ti ti-building':isAdd?'ti ti-plus':'ti ti-calendar'}),
-        isOff?'Add New Office':isAdd?'Add Custom Task':'Edit: '+modal.task.name),
-      isOff&&e('div',{className:'form-group'},e('label',{className:'form-label'},'Office name'),
-        e('input',{className:'form-input',autoFocus:true,value:name,placeholder:'e.g. Office 116',
-          onChange:function(ev){setName(ev.target.value);},onKeyDown:function(ev){if(ev.key==='Enter')submit();}})),
-      (isAdd||isCustTask)&&e('div',null,
-        e('div',{className:'form-group'},e('label',{className:'form-label'},'Task name'),
-          e('input',{className:'form-input',autoFocus:true,value:name,placeholder:'e.g. Pest control inspection',onChange:function(ev){setName(ev.target.value);}})),
-        e('div',{className:'form-row'},
-          e('div',{className:'form-group'},e('label',{className:'form-label'},'Category'),
-            e('input',{className:'form-input',value:cat,placeholder:'e.g. Safety',onChange:function(ev){setCat(ev.target.value);}})),
-          e('div',{className:'form-group'},e('label',{className:'form-label'},'Frequency (days)'),
-            e('input',{className:'form-input',type:'number',min:1,value:intv,onChange:function(ev){setIntv(ev.target.value);}}),
-            e('div',{className:'hint'},'How often this task repeats'))
-        )
-      ),
-      isEdit&&!isCustTask&&e('div',{className:'form-group'},
-        e('label',{className:'form-label'},'Frequency (days) — default: '+modal.task.intervalDays+'d'),
-        e('input',{className:'form-input',type:'number',min:1,value:intv,onChange:function(ev){setIntv(ev.target.value);}}),
-        e('div',{className:'hint'},'Overrides default for this office only')
-      ),
-      isEdit&&e('div',null,
-        e('div',{className:'form-row'},
-          e('div',{className:'form-group'},e('label',{className:'form-label'},'Last completed'),
-            e('input',{className:'form-input',type:'date',value:ld,onChange:function(ev){setLd(ev.target.value);}})),
-          e('div',{className:'form-group'},e('label',{className:'form-label'},'Next due (optional)'),
-            e('input',{className:'form-input',type:'date',value:nd,onChange:function(ev){setNd(ev.target.value);}}),
-            e('div',{className:'hint'},'Leave blank to auto-calculate'))
-        ),
-        e('div',{className:'form-group'},e('label',{className:'form-label'},'Notes / Technician'),
-          e('textarea',{className:'form-input',rows:2,value:notes,placeholder:'e.g. Filter size 16x25x1, vendor: ACME',onChange:function(ev){setNotes(ev.target.value);}}))
-      ),
-      err&&e('div',{className:'err-msg'},err),
-      e('div',{className:'modal-footer'},
-        e('button',{className:'btn btn-sm',onClick:function(){p.setModal(null);}}, 'Cancel'),
-        e('button',{className:'btn btn-sm btn-primary',onClick:submit},isOff?'Add Office':isEdit?'Save Changes':'Add Task')
-      )
-    )
-  );
-}
 
-/* ─── Google Drive Modal ─── */
-function GDriveModal(p){
-  var c1=useState(getStoredClientId());var cid=c1[0];var setCid=c1[1];
-  var c2=useState(false);var loading=c2[0];var setLoading=c2[1];
-  var c3=useState('');var errMsg=c3[0];var setErrMsg=c3[1];
-  var c4=useState('');var okMsg=c4[0];var setOkMsg=c4[1];
-  var isConn=!!_gToken;
+    'use strict';
+    var e=React.createElement,useState=React.useState,useEffect=React.useEffect,useRef=React.useRef;
 
-  function connect(){
-    var v=cid.trim();if(!v){setErrMsg('Please enter your Google Client ID.');return;}
-    storeClientId(v);setErrMsg('');setLoading(true);
-    initTokenClient(v,function(err){
-      setLoading(false);
-      if(err){setErrMsg('Connection failed: '+err.message);return;}
-      p.onConnected();setOkMsg('Connected to Google Drive!');
-    });
-  }
-  function saveDrive(){
-    if(!_gToken){setErrMsg('Connect to Google Drive first.');return;}
-    setLoading(true);setErrMsg('');
-    findFile(_gToken).then(function(eid){return uploadToDrive(_gToken,{offices:p.offices},eid);})
-      .then(function(){setLoading(false);setOkMsg('Saved to Google Drive!');p.showToast('Saved to Google Drive!','success');})
-      .catch(function(ex){setLoading(false);setErrMsg('Save failed: '+ex.message);});
-  }
-  function loadDrive(){
-    if(!_gToken){setErrMsg('Connect to Google Drive first.');return;}
-    setLoading(true);setErrMsg('');
-    findFile(_gToken).then(function(fid){
-      if(!fid){setLoading(false);setErrMsg('No saved file found in Google Drive. Save first from another device.');return null;}
-      return downloadFromDrive(_gToken,fid);
-    }).then(function(data){
-      if(!data)return;
-      if(!data.offices||!Array.isArray(data.offices)){setLoading(false);setErrMsg('Invalid data in saved file.');return;}
-      p.loadOffices(data.offices);setLoading(false);setOkMsg('Data loaded from Google Drive!');p.showToast('Loaded from Google Drive!','success');
-    }).catch(function(ex){setLoading(false);setErrMsg('Load failed: '+ex.message);});
-  }
-
-  return e('div',{className:'overlay',onClick:function(ev){if(ev.target===ev.currentTarget)p.onClose();}},
-    e('div',{className:'modal'},
-      e('div',{className:'modal-title'},e('i',{className:'ti ti-brand-google-drive'}),'Google Drive Sync'),
-      e('div',{className:'modal-subtitle'},'Save and load your tracker data to Google Drive so any device can access it.'),
-      e('div',{className:'info-box'},
-        e('strong',null,'One-time setup:'),
-        e('ol',null,
-          e('li',null,'Go to ',e('a',{href:'https://console.cloud.google.com',target:'_blank'},'console.cloud.google.com')),
-          e('li',null,'Create a project → Enable Google Drive API'),
-          e('li',null,'Credentials → Create OAuth 2.0 Client ID (Web Application)'),
-          e('li',null,'Add ',e('code',null,'null'),' under Authorized JavaScript origins'),
-          e('li',null,'Paste the Client ID below')
-        )
-      ),
-      e('div',{className:'warn-box'},
-        e('i',{className:'ti ti-alert-triangle',style:{marginRight:6}}),
-        'Google OAuth may block local files (file://). If it fails, use Export/Import instead — it\'s simpler and always works.'
-      ),
-      e('div',{className:'form-group'},
-        e('label',{className:'form-label'},'Google OAuth Client ID'),
-        e('input',{className:'form-input',value:cid,placeholder:'xxxxxxxxxxxx.apps.googleusercontent.com',onChange:function(ev){setCid(ev.target.value);}})
-      ),
-      errMsg&&e('div',{className:'err-msg',style:{whiteSpace:'pre-wrap'}},errMsg),
-      okMsg&&e('div',{className:'ok-msg'},e('i',{className:'ti ti-circle-check',style:{marginRight:6}}),okMsg),
-      e('div',{style:{display:'flex',gap:8,flexWrap:'wrap',marginBottom:4}},
-        e('button',{className:'btn btn-gdrive',onClick:connect,disabled:loading},e('i',{className:'ti ti-plug'}),loading?'Connecting…':'Connect to Google Drive'),
-        isConn&&e('button',{className:'btn btn-gdrive-out',onClick:saveDrive,disabled:loading},e('i',{className:'ti ti-cloud-upload'}),loading?'Saving…':'Save to Drive'),
-        isConn&&e('button',{className:'btn btn-gdrive-out',onClick:loadDrive,disabled:loading},e('i',{className:'ti ti-cloud-download'}),loading?'Loading…':'Load from Drive')
-      ),
-      e('div',{className:'modal-footer'},e('button',{className:'btn btn-sm',onClick:p.onClose},'Close'))
-    )
-  );
-}
-
-/* ─── App ─── */
-function App(){
-  var s0=useState([]);   var offices=s0[0];  var setOffices=s0[1];
-  var s1=useState(null); var selId=s1[0];    var setSelId=s1[1];
-  var s2=useState(null); var modal=s2[0];    var setModal=s2[1];
-  var s3=useState(null); var editOff=s3[0];  var setEditOff=s3[1];
-  var s4=useState('');   var editName=s4[0]; var setEditName=s4[1];
-  var s5=useState(false);var gdrive=s5[0];   var setGdrive=s5[1];
-  var s6=useState(false);var gconn=s6[0];    var setGconn=s6[1];
-  var s7=useState(null); var toast=s7[0];    var setToast=s7[1];
-  var editRef=useRef(null);
-  var fileRef=useRef(null);
-
-  useEffect(function(){
-    var data=loadLocal();
-    if(data&&data.offices&&data.offices.length){setOffices(data.offices);setSelId(data.offices[0].id);}
-    else{var init=DEFAULT_NAMES.map(function(n,i){return makeOffice(n,i);});setOffices(init);setSelId(init[0].id);}
-  },[]);
-  useEffect(function(){if(offices.length)saveLocal({offices:offices});},[offices]);
-  useEffect(function(){if(editOff&&editRef.current)editRef.current.focus();},[editOff]);
-
-  function toast2(msg,type){setToast({msg:msg,type:type||''});}
-  function upd(fn){setOffices(function(p){return fn(p);});}
-  var sel=offices.find(function(o){return o.id===selId;});
-
-  function markDone(oid,tid){
-    upd(function(prev){return prev.map(function(o){
-      if(o.id!==oid)return o;
-      var rec=o.tasks[tid]||makeRec();
-      var td=getAllTasks(o).find(function(t){return t.id===tid;});
-      var n=getInterval(rec,td);
-      return mg(o,{tasks:mg(o.tasks,{[tid]:mg(rec,{lastDone:todayStr(),nextDue:addDaysToToday(n)})})});
-    });});
-  }
-  function updateTaskRec(oid,tid,f){
-    upd(function(prev){return prev.map(function(o){
-      if(o.id!==oid)return o;
-      return mg(o,{tasks:mg(o.tasks,{[tid]:mg(o.tasks[tid]||makeRec(),f)})});
-    });});
-  }
-  function deleteTask(oid,tid){
-    upd(function(prev){return prev.map(function(o){
-      if(o.id!==oid)return o;
-      var ctd=(o.customTaskDefs||[]).filter(function(t){return t.id!==tid;});
-      var tasks=mg(o.tasks,{});delete tasks[tid];
-      return mg(o,{customTaskDefs:ctd,tasks:tasks});
-    });});
-  }
-  function addOffice(name){var o=makeOffice(name,Date.now());upd(function(p){return p.concat([o]);});setSelId(o.id);}
-  function renameOffice(id,name){
-    if(name&&name.trim())upd(function(p){return p.map(function(o){return o.id===id?mg(o,{name:name.trim()}):o;});});
-    setEditOff(null);
-  }
-  function deleteOffice(id){
-    upd(function(prev){var next=prev.filter(function(o){return o.id!==id;});if(selId===id)setSelId(next.length?next[0].id:null);return next;});
-  }
-  function addTask(oid,td){
-    var tid='cust-'+Date.now();
-    upd(function(prev){return prev.map(function(o){
-      if(o.id!==oid)return o;
-      return mg(o,{customTaskDefs:(o.customTaskDefs||[]).concat([mg(td,{id:tid})]),tasks:mg(o.tasks,{[tid]:makeRec()})});
-    });});
-  }
-  function editTaskDef(oid,tid,f){
-    upd(function(prev){return prev.map(function(o){
-      if(o.id!==oid)return o;
-      return mg(o,{customTaskDefs:(o.customTaskDefs||[]).map(function(t){return t.id===tid?mg(t,f):t;})});
-    });});
-  }
-  function loadOffices(data){setOffices(data);if(data.length)setSelId(data[0].id);}
-
-  function handleExport(){
-    var blob=new Blob([JSON.stringify({offices:offices,exportedAt:new Date().toISOString(),version:1},null,2)],{type:'application/json'});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a');a.href=url;a.download='maintenance_backup_'+todayStr()+'.json';
-    document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
-    toast2('Data exported successfully!','success');
-  }
-  function handleImportFile(ev){
-    var file=ev.target.files[0];if(!file)return;
-    var reader=new FileReader();
-    reader.onload=function(e2){
-      try{
-        var data=JSON.parse(e2.target.result);
-        if(!data.offices||!Array.isArray(data.offices))throw new Error('Invalid file format');
-        if(!confirm('Replace all current data with the imported data?'))return;
-        loadOffices(data.offices);toast2('Data imported!','success');
-      }catch(ex){toast2('Import failed: '+ex.message,'error');}
+    /* ════════════════════════════════════════════
+       PASTE YOUR FIREBASE CONFIG HERE
+       ════════════════════════════════════════════ */
+    var FIREBASE_CONFIG = null;
+    /* Example:
+    var FIREBASE_CONFIG = {
+      apiKey: "AIzaSy...",
+      authDomain: "your-app.firebaseapp.com",
+      projectId: "your-app",
+      storageBucket: "your-app.appspot.com",
+      messagingSenderId: "000000000",
+      appId: "1:000000000:web:abc123"
     };
-    reader.readAsText(file);ev.target.value='';
-  }
+    */
+    /* ════════════════════════════════════════════ */
 
-  var gOver=0,gSoon=0,gOk=0;
-  offices.forEach(function(o){getAllTasks(o).forEach(function(t){var s=getStatus(o.tasks[t.id]);if(s.cls==='pill-red')gOver++;else if(s.cls==='pill-amber')gSoon++;else if(s.cls==='pill-green')gOk++;});});
+    var COLLECTION='tracker', DOC_ID='offices';
 
-  return e('div',{className:'app'},
-    /* Header */
-    e('div',{className:'header'},
-      e('div',{className:'header-logo'},e('i',{className:'ti ti-tool'}),'Facility Maintenance Tracker'),
-      e('div',{className:'header-badges'},
-        e('span',{className:'badge badge-blue'}, offices.length+' Offices'),
-        e('span',{className:'badge badge-red'},  gOver+' Overdue'),
-        e('span',{className:'badge badge-amber'},gSoon+' Due Soon'),
-        e('span',{className:'badge badge-green'},gOk+' On Track')
-      ),
-      e('div',{className:'header-actions'},
-        e('button',{className:'btn btn-sm btn-export',onClick:handleExport},e('i',{className:'ti ti-download'}),'Export'),
-        e('button',{className:'btn btn-sm btn-import',onClick:function(){if(fileRef.current)fileRef.current.click();}},e('i',{className:'ti ti-upload'}),'Import'),
-        e('input',{ref:fileRef,type:'file',accept:'.json',style:{display:'none'},onChange:handleImportFile}),
-        e('div',{className:'header-divider'}),
-        e('button',{className:'btn btn-sm '+(gconn?'btn-gdrive-out':'btn-gdrive'),onClick:function(){setGdrive(true);}},
-          e('i',{className:'ti ti-brand-google-drive'}),gconn?'Drive Connected':'Google Drive')
-      )
-    ),
-    /* Main */
-    e('div',{className:'main'},
-      /* Sidebar */
-      e('div',{className:'sidebar'},
-        e('div',{className:'sidebar-label'},'Offices'),
-        e('div',{className:'sidebar-list'},
-          offices.map(function(o){
-            return e('div',{key:o.id,className:'office-item'+(selId===o.id?' active':''),onClick:function(){setSelId(o.id);}},
-              editOff===o.id
-                ?e('input',{ref:editRef,className:'inline-edit',value:editName,
-                    onChange:function(ev){setEditName(ev.target.value);},
-                    onKeyDown:function(ev){if(ev.key==='Enter')renameOffice(o.id,editName);if(ev.key==='Escape')setEditOff(null);},
-                    onBlur:function(){renameOffice(o.id,editName);},onClick:function(ev){ev.stopPropagation();}})
-                :e('span',{className:'office-name-wrap'},o.name),
-              editOff!==o.id&&e('button',{className:'office-edit-btn',title:'Rename office',
-                onClick:function(ev){ev.stopPropagation();setEditOff(o.id);setEditName(o.name);}},
-                e('i',{className:'ti ti-pencil'})),
-              e('span',{className:'dot '+officeDot(o)})
-            );
-          })
-        ),
-        e('div',{className:'sidebar-footer'},
-          e('button',{className:'btn btn-sm btn-block',onClick:function(){setModal({type:'add-office'});}},e('i',{className:'ti ti-plus'}),' Add Office')
+    var DEFAULT_TASKS=[
+      {id:'hvac-filter', name:'HVAC Filter Replacement',      category:'HVAC',          intervalDays:90,  builtIn:true},
+      {id:'water-filter',name:'Water Filter Replacement',     category:'Plumbing',      intervalDays:180, builtIn:true},
+      {id:'floor-clean', name:'Floor Cleaning Timesheet',     category:'Janitorial',    intervalDays:7,   builtIn:true},
+      {id:'hvac-maint',  name:'HVAC Maintenance',             category:'HVAC',          intervalDays:365, builtIn:true},
+      {id:'fire-ext',    name:'Fire Extinguisher Inspection', category:'Safety',        intervalDays:365, builtIn:true},
+      {id:'window-clean',name:'Window Cleaning',              category:'Janitorial',    intervalDays:90,  builtIn:true},
+      {id:'sharp-pickup',name:'Sharp Container Pickup',       category:'Medical Waste', intervalDays:30,  builtIn:true},
+      {id:'shred-pickup',name:'Shred Pickup',                 category:'Security',      intervalDays:30,  builtIn:true},
+    ];
+    var DEFAULT_NAMES=['Office 101','Office 102','Office 103','Office 104','Office 105','Office 106','Office 107','Office 108','Office 109','Office 110','Office 111','Office 112','Office 113','Office 114','Office 115'];
+    var BUILTIN_IDS=DEFAULT_TASKS.map(function(t){return t.id;});
+
+    function makeRec(){return{lastDone:'',nextDue:'',notes:'',customInterval:null};}
+    function makeOffice(name,seed){var tasks={};DEFAULT_TASKS.forEach(function(t){tasks[t.id]=makeRec();});return{id:'off-'+(Date.now()+seed),name:name,tasks:tasks,customTaskDefs:[]};}
+    function addDaysToToday(n){var d=new Date();d.setDate(d.getDate()+n);return d.toISOString().split('T')[0];}
+    function todayStr(){return new Date().toISOString().split('T')[0];}
+    function fmtDate(s){if(!s)return'—';var d=new Date(s+'T12:00:00');return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'2-digit'});}
+    function daysUntil(s){if(!s)return null;return Math.round((new Date(s)-new Date(new Date().toDateString()))/86400000);}
+    function getStatus(rec){
+      if(!rec||(!rec.lastDone&&!rec.nextDue))return{label:'Not scheduled',cls:'pill-gray'};
+      if(!rec.nextDue)return{label:'No due date',cls:'pill-blue'};
+      var d=daysUntil(rec.nextDue);
+      if(d<0)return{label:'Overdue '+Math.abs(d)+'d',cls:'pill-red'};
+      if(d<=7)return{label:'Due in '+d+'d',cls:'pill-amber'};
+      return{label:'Due in '+d+'d',cls:'pill-green'};
+    }
+    function getAllTasks(o){return DEFAULT_TASKS.concat(o.customTaskDefs||[]);}
+    function getInterval(rec,td){return(rec&&rec.customInterval)?rec.customInterval:td.intervalDays;}
+    function officeDot(o){
+      var r=false,a=false,any=false;
+      getAllTasks(o).forEach(function(t){var rec=o.tasks[t.id]||{};if(rec.lastDone)any=true;var s=getStatus(rec);if(s.cls==='pill-red')r=true;if(s.cls==='pill-amber')a=true;});
+      return r?'dot-red':a?'dot-amber':any?'dot-green':'dot-gray';
+    }
+    function mg(a,b){return Object.assign({},a,b);}
+    function loadLocal(){try{var r=localStorage.getItem('fac-v5');return r?JSON.parse(r):null;}catch(x){return null;}}
+    function saveLocal(d){try{localStorage.setItem('fac-v5',JSON.stringify(d));}catch(x){}}
+    function getStoredCfg(){try{var r=localStorage.getItem('fac-fb-cfg');return r?JSON.parse(r):null;}catch(x){return null;}}
+    function storeCfg(c){try{localStorage.setItem('fac-fb-cfg',JSON.stringify(c));}catch(x){}}
+
+    var _db=null, _saveTimer=null;
+    function initFirebase(cfg){
+      try{
+        if(typeof firebase==='undefined')return false;
+        if(!firebase.apps.length)firebase.initializeApp(cfg);
+        _db=firebase.firestore();return true;
+      }catch(x){return false;}
+    }
+    function firestoreSave(offices){
+      if(!_db)return;
+      clearTimeout(_saveTimer);
+      _saveTimer=setTimeout(function(){
+        _db.collection(COLLECTION).doc(DOC_ID)
+          .set({offices:offices,updatedAt:new Date().toISOString()})
+          .catch(function(x){console.warn('Firestore save error:',x);});
+      },800);
+    }
+    function firestoreListen(onChange){
+      if(!_db)return function(){};
+      return _db.collection(COLLECTION).doc(DOC_ID).onSnapshot(function(snap){
+        if(snap.exists){var d=snap.data();if(d&&d.offices)onChange(d.offices);}
+      },function(x){console.warn('Firestore listen error:',x);});
+    }
+
+    /* ── Toast ── */
+    function Toast(p){
+      useEffect(function(){var t=setTimeout(p.onClose,3200);return function(){clearTimeout(t);};},[]);
+      return e('div',{className:'toast '+(p.type||'')},
+        e('i',{className:p.type==='success'?'ti ti-circle-check':'ti ti-circle-x'}),p.message);
+    }
+
+    /* ── Setup Screen ── */
+    function SetupScreen(p){
+      var s1=useState('');var cfg=s1[0];var setCfg=s1[1];
+      var s2=useState('');var err=s2[0];var setErr=s2[1];
+      var placeholder='{\n  apiKey: "AIzaSy...",\n  authDomain: "your-app.firebaseapp.com",\n  projectId: "your-app",\n  storageBucket: "your-app.appspot.com",\n  messagingSenderId: "123456789",\n  appId: "1:123456789:web:abc123"\n}';
+      function connect(){
+        setErr('');
+        var raw=cfg.trim();
+        if(!raw){setErr('Please paste your Firebase config first.');return;}
+        try{
+          var obj=new Function('return ('+raw+')')();
+          if(!obj.apiKey||!obj.projectId){setErr('Config is missing apiKey or projectId. Copy the full config object.');return;}
+          p.onConnect(obj);
+        }catch(x){setErr('Could not read config. Make sure you copied the full { } block. Error: '+x.message);}
+      }
+      return e('div',{className:'setup-screen'},
+        e('div',{className:'setup-card'},
+          e('div',{className:'setup-title'},e('i',{className:'ti ti-flame'}),'Connect to Firebase'),
+          e('div',{className:'setup-subtitle'},'Do this once — after connecting the app loads automatically every time.'),
+          e('div',{className:'setup-steps'},
+            e('div',{className:'setup-step'},e('div',{className:'step-num'},'1'),
+              e('div',{className:'step-body'},e('div',{className:'step-title'},'Create a free Firebase project'),
+                e('div',{className:'step-desc'},'Go to ',e('a',{href:'https://console.firebase.google.com',target:'_blank'},'console.firebase.google.com'),
+                  ' → Add project → Name it anything → Disable Analytics → Create project.'))),
+            e('div',{className:'setup-step'},e('div',{className:'step-num'},'2'),
+              e('div',{className:'step-body'},e('div',{className:'step-title'},'Enable Firestore Database'),
+                e('div',{className:'step-desc'},'In the left sidebar → Firestore Database → Create database → Start in test mode → pick any location → Enable.'))),
+            e('div',{className:'setup-step'},e('div',{className:'step-num'},'3'),
+              e('div',{className:'step-body'},e('div',{className:'step-title'},'Get your config'),
+                e('div',{className:'step-desc'},'Project Overview gear ⚙️ → Project settings → scroll to "Your apps" → click the Web icon ',e('code',null,'</>'),
+                  ' → Register app → copy the ',e('code',null,'firebaseConfig'),' object → paste below.')))
+          ),
+          e('div',{className:'form-group'},
+            e('label',{className:'form-label'},'Paste your firebaseConfig here:'),
+            e('div',{className:'config-area'},
+              e('textarea',{value:cfg,onChange:function(ev){setCfg(ev.target.value);},placeholder:placeholder,spellCheck:false})
+            ),
+            e('div',{className:'hint'},'Your config is saved only on your device.')
+          ),
+          err&&e('div',{className:'setup-err'},e('i',{className:'ti ti-alert-circle',style:{marginRight:6}}),err),
+          e('div',{className:'setup-footer'},
+            e('button',{className:'btn btn-primary',onClick:connect},e('i',{className:'ti ti-plug'}),'Connect & Launch App')
+          )
         )
-      ),
-      /* Content */
-      e('div',{className:'content'},
-        sel
-          ?e(OfficeDetail,{key:sel.id,office:sel,markDone:markDone,updateTaskRec:updateTaskRec,deleteTask:deleteTask,editTaskDef:editTaskDef,
-              onAddTask:function(){setModal({type:'add-task',officeId:sel.id});},
-              onEditTask:function(task){setModal({type:'edit-task',officeId:sel.id,task:task});},
-              onDeleteOffice:function(){if(confirm('Delete '+sel.name+'? This cannot be undone.'))deleteOffice(sel.id);}})
-          :e('div',{className:'empty'},e('i',{className:'ti ti-building'}),e('p',null,'Select an office from the sidebar'))
-      )
-    ),
-    modal&&e(Modal,{modal:modal,offices:offices,setModal:setModal,addOffice:addOffice,addTask:addTask,updateTaskRec:updateTaskRec,editTaskDef:editTaskDef}),
-    gdrive&&e(GDriveModal,{offices:offices,onClose:function(){setGdrive(false);},onConnected:function(){setGconn(true);},loadOffices:loadOffices,showToast:toast2}),
-    toast&&e(Toast,{message:toast.msg,type:toast.type,onClose:function(){setToast(null);}})
-  );
-}
+      );
+    }
 
-ReactDOM.createRoot(document.getElementById('root')).render(e(App));
+    /* ── TaskRow ── */
+    function TaskRow(p){
+      var td=p.td,rec=p.rec;
+      var fv=useState(p.interval);var fVal=fv[0];var setFVal=fv[1];
+      useEffect(function(){setFVal(p.interval);},[p.interval]);
+      function commit(){var n=parseInt(fVal);if(n&&n>0)p.onFreqChange(n);else setFVal(p.interval);}
+      var st=getStatus(rec);
+      return e('tr',null,
+        e('td',{className:'col-name'},
+          e('div',{className:'task-name'},td.name),
+          rec.notes&&e('div',{className:'task-notes'},e('i',{className:'ti ti-notes',style:{fontSize:11,marginRight:3}}),rec.notes)
+        ),
+        e('td',{className:'col-cat'},e('span',{className:'badge badge-gray',style:{fontSize:10}},td.category)),
+        e('td',{className:'col-freq'},e('div',{className:'freq-cell'},
+          e('input',{className:'freq-input',type:'number',min:1,value:fVal,title:'Edit frequency in days',
+            onChange:function(ev){setFVal(ev.target.value);},onBlur:commit,onKeyDown:function(ev){if(ev.key==='Enter')ev.target.blur();}}),
+          e('span',{className:'freq-unit'},'d')
+        )),
+        e('td',{className:'col-last',style:{fontSize:12,color:'var(--text2)'}},fmtDate(rec.lastDone)),
+        e('td',{className:'col-next',style:{fontSize:12,color:'var(--text2)'}},fmtDate(rec.nextDue)),
+        e('td',{className:'col-status'},e('span',{className:'pill '+st.cls},st.label)),
+        e('td',{className:'col-act'},e('div',{className:'row-actions'},
+          e('button',{className:'icon-btn done-btn',title:'Mark done today',onClick:p.onDone},e('i',{className:'ti ti-check'})),
+          e('button',{className:'icon-btn',title:'Edit dates & notes',onClick:p.onEdit},e('i',{className:'ti ti-calendar'})),
+          p.isCustom&&e('button',{className:'icon-btn del-btn',title:'Delete task',onClick:p.onDelete},e('i',{className:'ti ti-trash'}))
+        ))
+      );
+    }
+
+    /* ── OfficeDetail ── */
+    function OfficeDetail(p){
+      var o=p.office,all=getAllTasks(o);
+      var over=0,soon=0,ok=0,ns=0;
+      all.forEach(function(t){var s=getStatus(o.tasks[t.id]);if(s.cls==='pill-red')over++;else if(s.cls==='pill-amber')soon++;else if(s.cls==='pill-green')ok++;else ns++;});
+      function onFreq(tid,n){
+        var rec=o.tasks[tid]||makeRec(),f={customInterval:n};
+        if(rec.lastDone){var nd=new Date(rec.lastDone+'T12:00:00');nd.setDate(nd.getDate()+n);f.nextDue=nd.toISOString().split('T')[0];}
+        p.updateTaskRec(o.id,tid,f);
+      }
+      var custom=all.filter(function(t){return BUILTIN_IDS.indexOf(t.id)===-1;});
+      function row(td,isCust){
+        var rec=o.tasks[td.id]||makeRec();
+        return e(TaskRow,{key:td.id,td:td,rec:rec,isCustom:isCust,interval:getInterval(rec,td),
+          onDone:function(){p.markDone(o.id,td.id);},onEdit:function(){p.onEditTask(td);},
+          onDelete:function(){p.deleteTask(o.id,td.id);},onFreqChange:function(n){onFreq(td.id,n);}});
+      }
+      return e('div',null,
+        e('div',{className:'office-header'},
+          e('div',{className:'office-title'},e('i',{className:'ti ti-building'}),o.name),
+          e('div',{className:'office-header-actions'},
+            e('button',{className:'btn btn-sm btn-primary',onClick:p.onAddTask},e('i',{className:'ti ti-plus'}),'Add Task'),
+            e('button',{className:'btn btn-sm btn-danger',onClick:p.onDeleteOffice},e('i',{className:'ti ti-trash'}),'Delete Office')
+          )
+        ),
+        e('div',{className:'stats-row'},
+          e('div',{className:'stat-card'},e('div',{className:'stat-label'},'Overdue'),    e('div',{className:'stat-value',style:{color:'var(--red)'}},over)),
+          e('div',{className:'stat-card'},e('div',{className:'stat-label'},'Due Soon'),   e('div',{className:'stat-value',style:{color:'var(--amber)'}},soon)),
+          e('div',{className:'stat-card'},e('div',{className:'stat-label'},'On Track'),   e('div',{className:'stat-value',style:{color:'var(--green)'}},ok)),
+          e('div',{className:'stat-card'},e('div',{className:'stat-label'},'Unscheduled'),e('div',{className:'stat-value',style:{color:'var(--text3)'}},ns))
+        ),
+        e('div',{className:'task-table-wrap'},
+          e('table',null,
+            e('thead',null,e('tr',null,
+              e('th',{className:'col-name'},'Task'),e('th',{className:'col-cat'},'Category'),
+              e('th',{className:'col-freq'},'Frequency'),e('th',{className:'col-last'},'Last Done'),
+              e('th',{className:'col-next'},'Next Due'),e('th',{className:'col-status'},'Status'),e('th',{className:'col-act'},'Actions')
+            )),
+            e('tbody',null,
+              e('tr',null,e('td',{colSpan:7,style:{padding:0}},e('div',{className:'section-divider'},'Standard Tasks'))),
+              DEFAULT_TASKS.map(function(td){return row(td,false);}),
+              custom.length>0&&e('tr',null,e('td',{colSpan:7,style:{padding:0}},e('div',{className:'section-divider'},'Custom Tasks'))),
+              custom.map(function(td){return row(td,true);})
+            )
+          )
+        )
+      );
+    }
+
+    /* ── Modal ── */
+    function Modal(p){
+      var modal=p.modal,offices=p.offices;
+      var n1=useState('');var name=n1[0];var setName=n1[1];
+      var n2=useState('');var cat=n2[0];var setCat=n2[1];
+      var n3=useState(30);var intv=n3[0];var setIntv=n3[1];
+      var n4=useState('');var ld=n4[0];var setLd=n4[1];
+      var n5=useState('');var nd=n5[0];var setNd=n5[1];
+      var n6=useState('');var notes=n6[0];var setNotes=n6[1];
+      var n7=useState('');var err=n7[0];var setErr=n7[1];
+      var office=modal.officeId?offices.find(function(o){return o.id===modal.officeId;}):null;
+      useEffect(function(){
+        if(modal.type==='edit-task'&&office&&modal.task){
+          var td=modal.task,rec=office.tasks[td.id]||{};
+          setName(td.name||'');setCat(td.category||'');setIntv(rec.customInterval||td.intervalDays||30);
+          setLd(rec.lastDone||'');setNd(rec.nextDue||'');setNotes(rec.notes||'');
+        }
+      },[]);
+      function submit(){
+        var n=parseInt(intv);
+        if(modal.type==='add-office'){if(!name.trim()){setErr('Office name is required');return;}p.addOffice(name.trim());p.setModal(null);}
+        else if(modal.type==='add-task'){
+          if(!name.trim()){setErr('Task name is required');return;}
+          if(!n||n<1){setErr('Frequency must be at least 1 day');return;}
+          p.addTask(modal.officeId,{name:name.trim(),category:cat.trim()||'Custom',intervalDays:n});p.setModal(null);
+        }else if(modal.type==='edit-task'){
+          if(!n||n<1){setErr('Frequency must be at least 1 day');return;}
+          var tid=modal.task.id,isCust=BUILTIN_IDS.indexOf(tid)===-1;
+          if(isCust)p.editTaskDef(modal.officeId,tid,{name:name.trim(),category:cat.trim(),intervalDays:n});
+          var f={notes:notes,customInterval:n};
+          if(ld)f.lastDone=ld;
+          if(nd){f.nextDue=nd;}else if(ld&&n){var c=new Date(ld+'T12:00:00');c.setDate(c.getDate()+n);f.nextDue=c.toISOString().split('T')[0];}
+          p.updateTaskRec(modal.officeId,tid,f);p.setModal(null);
+        }
+      }
+      var isOff=modal.type==='add-office',isAdd=modal.type==='add-task',isEdit=modal.type==='edit-task';
+      var isCustTask=isEdit&&BUILTIN_IDS.indexOf(modal.task.id)===-1;
+      return e('div',{className:'overlay',onClick:function(ev){if(ev.target===ev.currentTarget)p.setModal(null);}},
+        e('div',{className:'modal'},
+          e('div',{className:'modal-title'},e('i',{className:isOff?'ti ti-building':isAdd?'ti ti-plus':'ti ti-calendar'}),
+            isOff?'Add New Office':isAdd?'Add Custom Task':'Edit: '+modal.task.name),
+          isOff&&e('div',{className:'form-group'},e('label',{className:'form-label'},'Office name'),
+            e('input',{className:'form-input',autoFocus:true,value:name,placeholder:'e.g. Office 116',
+              onChange:function(ev){setName(ev.target.value);},onKeyDown:function(ev){if(ev.key==='Enter')submit();}})),
+          (isAdd||isCustTask)&&e('div',null,
+            e('div',{className:'form-group'},e('label',{className:'form-label'},'Task name'),
+              e('input',{className:'form-input',autoFocus:true,value:name,placeholder:'e.g. Pest control inspection',onChange:function(ev){setName(ev.target.value);}})),
+            e('div',{className:'form-row'},
+              e('div',{className:'form-group'},e('label',{className:'form-label'},'Category'),
+                e('input',{className:'form-input',value:cat,placeholder:'e.g. Safety',onChange:function(ev){setCat(ev.target.value);}})),
+              e('div',{className:'form-group'},e('label',{className:'form-label'},'Frequency (days)'),
+                e('input',{className:'form-input',type:'number',min:1,value:intv,onChange:function(ev){setIntv(ev.target.value);}}),
+                e('div',{className:'hint'},'How often this task repeats'))
+            )
+          ),
+          isEdit&&!isCustTask&&e('div',{className:'form-group'},
+            e('label',{className:'form-label'},'Frequency (days) — default: '+modal.task.intervalDays+'d'),
+            e('input',{className:'form-input',type:'number',min:1,value:intv,onChange:function(ev){setIntv(ev.target.value);}}),
+            e('div',{className:'hint'},'Overrides default for this office only')
+          ),
+          isEdit&&e('div',null,
+            e('div',{className:'form-row'},
+              e('div',{className:'form-group'},e('label',{className:'form-label'},'Last completed'),
+                e('input',{className:'form-input',type:'date',value:ld,onChange:function(ev){setLd(ev.target.value);}})),
+              e('div',{className:'form-group'},e('label',{className:'form-label'},'Next due (optional)'),
+                e('input',{className:'form-input',type:'date',value:nd,onChange:function(ev){setNd(ev.target.value);}}),
+                e('div',{className:'hint'},'Leave blank to auto-calculate'))
+            ),
+            e('div',{className:'form-group'},e('label',{className:'form-label'},'Notes / Technician'),
+              e('textarea',{className:'form-input',rows:2,value:notes,placeholder:'e.g. Filter 16x25x1, vendor: ACME',onChange:function(ev){setNotes(ev.target.value);}}))
+          ),
+          err&&e('div',{className:'err-msg'},err),
+          e('div',{className:'modal-footer'},
+            e('button',{className:'btn btn-sm',onClick:function(){p.setModal(null);}}, 'Cancel'),
+            e('button',{className:'btn btn-sm btn-primary',onClick:submit},isOff?'Add Office':isEdit?'Save Changes':'Add Task')
+          )
+        )
+      );
+    }
+
+    /* ── App ── */
+    function App(){
+      var a0=useState(null); var fbCfg=a0[0];  var setFbCfg=a0[1];
+      var a1=useState([]);   var offices=a1[0]; var setOffices=a1[1];
+      var a2=useState(null); var selId=a2[0];   var setSelId=a2[1];
+      var a3=useState(null); var modal=a3[0];   var setModal=a3[1];
+      var a4=useState(null); var editOff=a4[0]; var setEditOff=a4[1];
+      var a5=useState('');   var editName=a5[0];var setEditName=a5[1];
+      var a6=useState(null); var toast=a6[0];   var setToast=a6[1];
+      var a7=useState('setup');var syncSt=a7[0];var setSyncSt=a7[1];
+      var editRef=useRef(null);
+      var fileRef=useRef(null);
+      var unsubRef=useRef(null);
+      var skipSnap=useRef(false);
+
+      useEffect(function(){
+        var cfg=FIREBASE_CONFIG||getStoredCfg();
+        if(cfg)boot(cfg);
+      },[]);
+      useEffect(function(){if(editOff&&editRef.current)editRef.current.focus();},[editOff]);
+
+      function boot(cfg){
+        var ok=initFirebase(cfg);
+        if(!ok){setSyncSt('offline');return;}
+        storeCfg(cfg);setFbCfg(cfg);setSyncSt('live');
+        if(unsubRef.current)unsubRef.current();
+        unsubRef.current=firestoreListen(function(incoming){
+          if(skipSnap.current){skipSnap.current=false;return;}
+          setOffices(incoming);
+          setSelId(function(prev){return prev||incoming[0].id;});
+        });
+        _db.collection(COLLECTION).doc(DOC_ID).get().then(function(snap){
+          if(snap.exists&&snap.data()&&snap.data().offices&&snap.data().offices.length){
+            var data=snap.data().offices;setOffices(data);setSelId(data[0].id);
+          }else{
+            var init=DEFAULT_NAMES.map(function(n,i){return makeOffice(n,i);});
+            setOffices(init);setSelId(init[0].id);
+            skipSnap.current=true;firestoreSave(init);
+          }
+        }).catch(function(){
+          var local=loadLocal();
+          if(local&&local.offices){setOffices(local.offices);setSelId(local.offices[0].id);}
+          setSyncSt('offline');
+        });
+      }
+
+      function toast2(msg,type){setToast({msg:msg,type:type||''});}
+
+      function upd(fn){
+        setOffices(function(prev){
+          var next=fn(prev);
+          saveLocal({offices:next});
+          if(_db){setSyncSt('saving');skipSnap.current=true;firestoreSave(next);setTimeout(function(){setSyncSt('live');},1200);}
+          return next;
+        });
+      }
+
+      var sel=offices.find(function(o){return o.id===selId;});
+
+      function markDone(oid,tid){upd(function(prev){return prev.map(function(o){
+        if(o.id!==oid)return o;
+        var rec=o.tasks[tid]||makeRec();var td=getAllTasks(o).find(function(t){return t.id===tid;});var n=getInterval(rec,td);
+        return mg(o,{tasks:mg(o.tasks,{[tid]:mag(rec,{lastDone:todayStr(),nextDue:addDaysToToday(n)})})});
+        function mag(a,b){return Object.assign({},a,b);}
+      });});}
+      function updateTaskRec(oid,tid,f){upd(function(prev){return prev.map(function(o){
+        if(o.id!==oid)return o;return mg(o,{tasks:mg(o.tasks,{[tid]:mg(o.tasks[tid]||makeRec(),f)})});
+      });});}
+      function deleteTask(oid,tid){upd(function(prev){return prev.map(function(o){
+        if(o.id!==oid)return o;var ctd=(o.customTaskDefs||[]).filter(function(t){return t.id!==tid;});var tasks=mg(o.tasks,{});delete tasks[tid];return mg(o,{customTaskDefs:ctd,tasks:tasks});
+      });});}
+      function addOffice(name){var o=makeOffice(name,Date.now());upd(function(p){return p.concat([o]);});setSelId(o.id);}
+      function renameOffice(id,name){
+        if(name&&name.trim())upd(function(p){return p.map(function(o){return o.id===id?mg(o,{name:name.trim()}):o;});});
+        setEditOff(null);
+      }
+      function deleteOffice(id){upd(function(prev){var next=prev.filter(function(o){return o.id!==id;});if(selId===id)setSelId(next.length?next[0].id:null);return next;});}
+      function addTask(oid,td){
+        var tid='cust-'+Date.now();
+        upd(function(prev){return prev.map(function(o){
+          if(o.id!==oid)return o;return mg(o,{customTaskDefs:(o.customTaskDefs||[]).concat([mg(td,{id:tid})]),tasks:mg(o.tasks,{[tid]:makeRec()})});
+        });});
+      }
+      function editTaskDef(oid,tid,f){upd(function(prev){return prev.map(function(o){
+        if(o.id!==oid)return o;return mg(o,{customTaskDefs:(o.customTaskDefs||[]).map(function(t){return t.id===tid?mg(t,f):t;})});
+      });});}
+
+      function handleExport(){
+        var blob=new Blob([JSON.stringify({offices:offices,exportedAt:new Date().toISOString()},null,2)],{type:'application/json'});
+        var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='maintenance_backup_'+todayStr()+'.json';
+        document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);toast2('Exported!','success');
+      }
+      function handleImportFile(ev){
+        var file=ev.target.files[0];if(!file)return;
+        var reader=new FileReader();
+        reader.onload=function(e2){
+          try{var data=JSON.parse(e2.target.result);if(!data.offices)throw new Error('Invalid file');
+            if(!confirm('Replace all data with imported file?'))return;
+            upd(function(){return data.offices;});if(data.offices.length)setSelId(data.offices[0].id);toast2('Imported!','success');
+          }catch(ex){toast2('Import failed: '+ex.message,'error');}
+        };reader.readAsText(file);ev.target.value='';
+      }
+
+      var syncLabel={live:'🟢 Live',saving:'⏳ Saving…',offline:'🔴 Offline',setup:'⚪ Not connected'}[syncSt]||syncSt;
+      var gOver=0,gSoon=0,gOk=0;
+      offices.forEach(function(o){getAllTasks(o).forEach(function(t){var s=getStatus(o.tasks[t.id]);if(s.cls==='pill-red')gOver++;else if(s.cls==='pill-amber')gSoon++;else if(s.cls==='pill-green')gOk++;});});
+
+      if(fbCfg===null){
+        return e('div',{className:'app'},
+          e('div',{className:'header'},e('div',{className:'header-logo'},e('i',{className:'ti ti-tool'}),'Facility Maintenance Tracker')),
+          e(SetupScreen,{onConnect:boot})
+        );
+      }
+
+      return e('div',{className:'app'},
+        e('div',{className:'header'},
+          e('div',{className:'header-logo'},e('i',{className:'ti ti-tool'}),'Facility Maintenance Tracker'),
+          e('div',{className:'header-badges'},
+            e('span',{className:'badge badge-blue'}, offices.length+' Offices'),
+            e('span',{className:'badge badge-red'},  gOver+' Overdue'),
+            e('span',{className:'badge badge-amber'},gSoon+' Due Soon'),
+            e('span',{className:'badge badge-green'},gOk+' On Track')
+          ),
+          e('div',{className:'header-actions'},
+            e('div',{className:'sync-indicator'},e('span',{className:'sync-dot '+syncSt}),syncSt==='live'?'Live':syncSt==='saving'?'Saving…':syncSt==='offline'?'Offline':'—'),
+            e('div',{className:'header-divider'}),
+            e('button',{className:'btn btn-sm btn-export',onClick:handleExport},e('i',{className:'ti ti-download'}),'Export'),
+            e('button',{className:'btn btn-sm btn-import',onClick:function(){if(fileRef.current)fileRef.current.click();}},e('i',{className:'ti ti-upload'}),'Import'),
+            e('input',{ref:fileRef,type:'file',accept:'.json',style:{display:'none'},onChange:handleImportFile})
+          )
+        ),
+        e('div',{className:'main'},
+          e('div',{className:'sidebar'},
+            e('div',{className:'sidebar-label'},'Offices'),
+            e('div',{className:'sidebar-list'},offices.map(function(o){
+              return e('div',{key:o.id,className:'office-item'+(selId===o.id?' active':''),onClick:function(){setSelId(o.id);}},
+                editOff===o.id
+                  ?e('input',{ref:editRef,className:'inline-edit',value:editName,
+                      onChange:function(ev){setEditName(ev.target.value);},
+                      onKeyDown:function(ev){if(ev.key==='Enter')renameOffice(o.id,editName);if(ev.key==='Escape')setEditOff(null);},
+                      onBlur:function(){renameOffice(o.id,editName);},onClick:function(ev){ev.stopPropagation();}})
+                  :e('span',{className:'office-name-wrap'},o.name),
+                editOff!==o.id&&e('button',{className:'office-edit-btn',title:'Rename',
+                  onClick:function(ev){ev.stopPropagation();setEditOff(o.id);setEditName(o.name);}},e('i',{className:'ti ti-pencil'})),
+                e('span',{className:'dot '+officeDot(o)})
+              );
+            })),
+            e('div',{className:'sidebar-footer'},e('button',{className:'btn btn-sm btn-block',onClick:function(){setModal({type:'add-office'});}},e('i',{className:'ti ti-plus'}),' Add Office'))
+          ),
+          e('div',{className:'content'},
+            sel?e(OfficeDetail,{key:sel.id,office:sel,markDone:markDone,updateTaskRec:updateTaskRec,deleteTask:deleteTask,editTaskDef:editTaskDef,
+                onAddTask:function(){setModal({type:'add-task',officeId:sel.id});},
+                onEditTask:function(task){setModal({type:'edit-task',officeId:sel.id,task:task});},
+                onDeleteOffice:function(){if(confirm('Delete '+sel.name+'?'))deleteOffice(sel.id);}})
+              :e('div',{className:'empty'},e('i',{className:'ti ti-building'}),e('p',null,'Select an office'))
+          )
+        ),
+        modal&&e(Modal,{modal:modal,offices:offices,setModal:setModal,addOffice:addOffice,addTask:addTask,updateTaskRec:updateTaskRec,editTaskDef:editTaskDef}),
+        toast&&e(Toast,{message:toast.msg,type:toast.type,onClose:function(){setToast(null);}})
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(e(App));
+  };
 })();
 </script>
 
-
-</body></html>
+</body>
+</html>
