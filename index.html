@@ -32,6 +32,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .error-card h2{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text)}
 .error-card p{font-size:13px;color:var(--text3);line-height:1.6;margin-bottom:16px}
 .error-card button{background:var(--blue);color:#fff;border:none;padding:9px 20px;border-radius:var(--radius);font-size:13px;cursor:pointer;font-family:inherit;font-weight:600}
+/* Passcode Screen */
+.lock-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;background:var(--bg);gap:0}
+.lock-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px 32px 28px;width:320px;box-shadow:0 20px 60px rgba(0,0,0,.6);text-align:center}
+.lock-icon{width:56px;height:56px;background:var(--blue-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;border:1px solid #2a3d70}
+.lock-icon i{font-size:26px;color:var(--blue)}
+.lock-title{font-size:17px;font-weight:700;color:var(--text);margin-bottom:4px}
+.lock-subtitle{font-size:12px;color:var(--text3);margin-bottom:24px}
+.lock-dots{display:flex;justify-content:center;gap:12px;margin-bottom:28px;height:14px}
+.lock-dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--border2);background:transparent;transition:all .15s}
+.lock-dot.filled{background:var(--blue);border-color:var(--blue);transform:scale(1.1)}
+.lock-dot.error{background:var(--red);border-color:var(--red)}
+.lock-numpad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.lock-key{background:var(--bg3);border:1px solid var(--border2);color:var(--text);border-radius:var(--radius);padding:14px 10px;font-size:18px;font-weight:600;cursor:pointer;transition:all .12s;font-family:inherit;user-select:none}
+.lock-key:hover{background:var(--bg4);border-color:var(--blue);color:var(--blue)}
+.lock-key:active{transform:scale(.94)}
+.lock-key.clear{font-size:13px;color:var(--text3);font-weight:500}
+.lock-key.clear:hover{color:var(--red);border-color:var(--red);background:var(--red-dim)}
+.lock-key.empty{visibility:hidden;cursor:default}
+.lock-key.empty:hover{background:var(--bg3);border-color:var(--border2)}
+.lock-err{font-size:12px;color:var(--red-text);min-height:18px;margin-top:2px}
+.lock-shake{animation:shake .4s ease}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 /* Header */
 .header{background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 18px;display:flex;align-items:center;gap:10px;flex-shrink:0;flex-wrap:wrap}
 .header-logo{display:flex;align-items:center;gap:9px;font-size:15px;font-weight:700;color:var(--text)}
@@ -287,14 +309,20 @@ window._runApp = (function() {
        PASTE YOUR FIREBASE CONFIG HERE
        ════════════════════════════════════════════ */
     var FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDtlaoAA0gprW9qJaIBIxNDBKCVx4w8E4E",
-  authDomain: "maintenance-tracker-ed411.firebaseapp.com",
-  projectId: "maintenance-tracker-ed411",
-  storageBucket: "maintenance-tracker-ed411.firebasestorage.app",
-  messagingSenderId: "555556862817",
-  appId: "1:555556862817:web:f090da6c67ef1ed8c22320"
-};
-    */
+      apiKey: "AIzaSyDtlaoAA0gprW9qJaIBIxNDBKCVx4w8E4E",
+      authDomain: "maintenance-tracker-ed411.firebaseapp.com",
+      projectId: "maintenance-tracker-ed411",
+      storageBucket: "maintenance-tracker-ed411.firebasestorage.app",
+      messagingSenderId: "555556862817",
+      appId: "1:555556862817:web:f090da6c67ef1ed8c22320"
+    };
+    /* ════════════════════════════════════════════ */
+
+    /* ════════════════════════════════════════════
+       SET YOUR PASSCODE HERE (digits only)
+       Change '1234' to any number you want
+       ════════════════════════════════════════════ */
+    var PASSCODE = '1997';
     /* ════════════════════════════════════════════ */
 
     var COLLECTION='tracker', DOC_ID='offices';
@@ -361,6 +389,71 @@ window._runApp = (function() {
       return _db.collection(COLLECTION).doc(DOC_ID).onSnapshot(function(snap){
         if(snap.exists){var d=snap.data();if(d&&d.offices)onChange(d.offices);}
       },function(x){console.warn('Firestore listen error:',x);});
+    }
+
+    /* ── Passcode helpers ── */
+    var LOCK_KEY = 'fac-unlocked';
+    function isUnlocked(){
+      try{
+        var v=sessionStorage.getItem(LOCK_KEY);
+        return v==='yes';
+      }catch(x){return false;}
+    }
+    function setUnlocked(){
+      try{sessionStorage.setItem(LOCK_KEY,'yes');}catch(x){}
+    }
+
+    /* ── PasscodeScreen ── */
+    function PasscodeScreen(p){
+      var s1=useState([]);  var digits=s1[0]; var setDigits=s1[1];
+      var s2=useState('');  var err=s2[0];    var setErr=s2[1];
+      var s3=useState(false);var shake=s3[0]; var setShake=s3[1];
+
+      var LEN=PASSCODE.length;
+
+      function pressKey(d){
+        if(digits.length>=LEN)return;
+        var next=digits.concat([d]);
+        setDigits(next);
+        setErr('');
+        if(next.length===LEN){
+          setTimeout(function(){
+            if(next.join('')===PASSCODE){
+              setUnlocked();
+              p.onUnlock();
+            }else{
+              setShake(true);
+              setErr('Incorrect passcode');
+              setTimeout(function(){setDigits([]);setShake(false);},600);
+            }
+          },120);
+        }
+      }
+
+      function clear(){setDigits(digits.slice(0,-1));setErr('');}
+
+      var keys=['1','2','3','4','5','6','7','8','9','','0','⌫'];
+
+      return e('div',{className:'lock-screen'},
+        e('div',{className:'lock-card'},
+          e('div',{className:'lock-icon'},e('i',{className:'ti ti-lock'})),
+          e('div',{className:'lock-title'},'Maintenance Tracker'),
+          e('div',{className:'lock-subtitle'},'Enter passcode to continue'),
+          e('div',{className:'lock-dots'+(shake?' lock-shake':'')},
+            Array.from({length:LEN}).map(function(_,i){
+              return e('div',{key:i,className:'lock-dot'+(i<digits.length?(err?' error':' filled'):'')});
+            })
+          ),
+          e('div',{className:'lock-numpad'},
+            keys.map(function(k,i){
+              if(k==='')return e('div',{key:i,className:'lock-key empty'});
+              if(k==='⌫')return e('button',{key:i,className:'lock-key clear',onClick:clear},e('i',{className:'ti ti-backspace'}));
+              return e('button',{key:i,className:'lock-key',onClick:function(){pressKey(k);}},k);
+            })
+          ),
+          e('div',{className:'lock-err'},err)
+        )
+      );
     }
 
     /* ── Toast ── */
@@ -585,6 +678,7 @@ window._runApp = (function() {
       var a5=useState('');   var editName=a5[0];var setEditName=a5[1];
       var a6=useState(null); var toast=a6[0];   var setToast=a6[1];
       var a7=useState('setup');var syncSt=a7[0];var setSyncSt=a7[1];
+      var a8=useState(isUnlocked()); var unlocked=a8[0]; var setUnlocked2=a8[1];
       var editRef=useRef(null);
       var fileRef=useRef(null);
       var unsubRef=useRef(null);
@@ -595,6 +689,11 @@ window._runApp = (function() {
         if(cfg)boot(cfg);
       },[]);
       useEffect(function(){if(editOff&&editRef.current)editRef.current.focus();},[editOff]);
+
+      // Show passcode screen if not unlocked
+      if(!unlocked){
+        return e(PasscodeScreen,{onUnlock:function(){setUnlocked2(true);}});
+      }
 
       function boot(cfg){
         var ok=initFirebase(cfg);
